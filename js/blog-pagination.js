@@ -215,14 +215,7 @@
                 image: 'assets/gallery/banda-5.jpg',
                 url: 'post/post-8.html'
             },
-            {
-                id: 'post-7',
-                title: 'Plantilla de Artículo',
-                excerpt: 'Plantilla para artículos de blog del Grupo Musical Versátil La Célula',
-                date: '02 sep 2025',
-                image: 'assets/gallery/banda-6.jpg',
-                url: 'post/post-7.html'
-            },
+
             {
                 id: 'post-6',
                 title: 'Elegancia y Sofisticación: La Música Perfecta para una Cena de Gala',
@@ -241,10 +234,10 @@
             },
             {
                 id: 'post-4',
-                title: 'Guía Paso a Paso: Cómo Contratar a Célula para tu Evento',
-                excerpt: 'Sigue esta guía en 5 pasos para contratar a Grupo Musical Versátil La Célula y asegura la mejor música en vivo para tu evento.',
+                title: '5 Géneros Musicales que no Pueden Faltar en tu Boda para que Todos Bailen',
+                excerpt: 'Descubre los 5 géneros musicales que harán de tu boda un evento inolvidable. ¡Deja que Grupo Musical Versátil La Célula ponga a todos a bailar en tu gran día!',
                 date: '23 ago 2025',
-                image: 'assets/gallery/banda-9.jpg',
+                image: 'assets/gallery/banda-5.jpg',
                 url: 'post/post-4.html'
             },
             {
