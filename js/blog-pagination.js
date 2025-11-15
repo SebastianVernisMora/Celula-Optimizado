@@ -341,55 +341,14 @@
             currentPage = pageNumber;
         }
 
-        /**
-         * Actualiza los enlaces de paginación según la página actual
-         */
-        function updatePagination() {
-            // Buscar el contenedor de paginación existente
-            const paginationContainer = document.querySelector('.pagination-list');
-            if (!paginationContainer) return;
+        // Eliminamos las funciones de paginación ya que mostraremos todos los posts
 
-            // Limpiar el contenido actual
-            paginationContainer.innerHTML = '';
-
-            // Botón Anterior
-            const prevButton = document.createElement('li');
-            prevButton.innerHTML = `<a href="#" class="page-link ${currentPage === 1 ? 'page-link-inactive' : 'page-link-active'}"
-                onclick="changePage(${currentPage > 1 ? currentPage - 1 : 1}); return false;">← Anterior</a>`;
-            paginationContainer.appendChild(prevButton);
-
-            // Números de página
-            for (let i = 1; i <= totalPages; i++) {
-                const pageItem = document.createElement('li');
-                pageItem.innerHTML = `<a href="#" class="page-link ${i === currentPage ? 'page-link-active' : 'page-link-inactive'}"
-                    onclick="changePage(${i}); return false;">${i}</a>`;
-                paginationContainer.appendChild(pageItem);
-            }
-
-            // Botón Siguiente
-            const nextButton = document.createElement('li');
-            nextButton.innerHTML = `<a href="#" class="page-link ${currentPage === totalPages ? 'page-link-inactive' : 'page-link-active'} page-link-next"
-                onclick="changePage(${currentPage < totalPages ? currentPage + 1 : totalPages}); return false;">Siguiente →</a>`;
-            paginationContainer.appendChild(nextButton);
-        }
-
-        // Función global para cambiar de página
-        window.changePage = function(pageNumber) {
-            if (pageNumber < 1 || pageNumber > totalPages) return;
-
-            showPage(pageNumber);
-            updatePagination();
-
-            // Desplazar hacia arriba para ver los resultados
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        };
-
-        // Mostrar los primeros 6 posts (página 1)
-        console.log('📄 Mostrando página inicial:', currentPage);
-        showPage(currentPage);
-
-        // Actualizar la paginación
-        console.log('🔄 Actualizando paginación...');
-        updatePagination();
+        // Mostrar todos los posts sin paginación
+        console.log('📄 Mostrando todos los posts sin paginación');
+        
+        // Asegurarse de que todos los posts sean visibles
+        allPosts.forEach(post => {
+            post.classList.remove('hidden-post');
+        });
     });
 })();
