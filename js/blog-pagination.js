@@ -329,21 +329,21 @@
 
                 // Botón Anterior
                 const prevButton = document.createElement('li');
-                prevButton.innerHTML = `<a href="#" class="page-link ${currentPage === 1 ? 'page-link-inactive' : 'page-link-active'}"
+                prevButton.innerHTML = `<a href="../contacto.html" class="page-link ${currentPage === 1 ? 'page-link-inactive' : 'page-link-active'}"
                     onclick="changePage(${currentPage > 1 ? currentPage - 1 : 1}); return false;">← Anterior</a>`;
                 paginationContainer.appendChild(prevButton);
 
                 // Números de página
                 for (let i = 1; i <= totalPages; i++) {
                     const pageItem = document.createElement('li');
-                    pageItem.innerHTML = `<a href="#" class="page-link ${i === currentPage ? 'page-link-active' : 'page-link-inactive'}"
+                    pageItem.innerHTML = `<a href="../contacto.html" class="page-link ${i === currentPage ? 'page-link-active' : 'page-link-inactive'}"
                         onclick="changePage(${i}); return false;">${i}</a>`;
                     paginationContainer.appendChild(pageItem);
                 }
 
                 // Botón Siguiente
                 const nextButton = document.createElement('li');
-                nextButton.innerHTML = `<a href="#" class="page-link ${currentPage === totalPages ? 'page-link-inactive' : 'page-link-active'} page-link-next"
+                nextButton.innerHTML = `<a href="../contacto.html" class="page-link ${currentPage === totalPages ? 'page-link-inactive' : 'page-link-active'} page-link-next"
                     onclick="changePage(${currentPage < totalPages ? currentPage + 1 : totalPages}); return false;">Siguiente →</a>`;
                 paginationContainer.appendChild(nextButton);
             }

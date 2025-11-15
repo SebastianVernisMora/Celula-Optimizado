@@ -34,16 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Menú móvil
-    const mobileToggle = document.getElementById('mobile-menu-toggle');
-    const navMenu = document.getElementById('nav-menu');
-
-    if (mobileToggle && navMenu) {
-        mobileToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-            this.classList.toggle('active');
-        });
-    }
+    // Menú móvil - Manejado por navigation.js
 
     // Lazy loading para imágenes
     const images = document.querySelectorAll('img[loading="lazy"]');

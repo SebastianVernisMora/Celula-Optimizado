@@ -58,16 +58,27 @@ document.addEventListener('DOMContentLoaded', function() {
         const mobileToggle = document.getElementById('mobile-menu-toggle');
         const navMenu = document.getElementById('nav-menu');
         
+        console.log('📱 Inicializando menú móvil...');
+        console.log('Toggle encontrado:', !!mobileToggle);
+        console.log('Menu encontrado:', !!navMenu);
+        
         if (mobileToggle && navMenu) {
-            mobileToggle.addEventListener('click', function() {
+            mobileToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('🔘 Click en botón hamburguesa');
                 navMenu.classList.toggle('active');
                 this.classList.toggle('active');
+                console.log('Estado del menú:', navMenu.classList.contains('active') ? 'ABIERTO' : 'CERRADO');
             });
             
             // Cerrar menú al hacer clic fuera
             document.addEventListener('click', function(e) {
                 if (!mobileToggle.contains(e.target) && !navMenu.contains(e.target)) {
-                    closeMobileMenu();
+                    if (navMenu.classList.contains('active')) {
+                        console.log('🚪 Cerrando menú (click fuera)');
+                        closeMobileMenu();
+                    }
                 }
             });
             
@@ -77,6 +88,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     closeMobileMenu();
                 }
             });
+            
+            console.log('✅ Menú móvil inicializado correctamente');
+        } else {
+            console.error('❌ No se encontraron elementos del menú móvil');
         }
     }
     

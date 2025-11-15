@@ -79,7 +79,7 @@ class YouTubeCarousel {
 
             for (let i = startIndex; i < endIndex; i++) {
                 const video = this.videos[i];
-                // Cargar como iframe si es el primer grupo (groupIndex === 0)
+                // Siempre cargar como iframe para el primer grupo (groupIndex === 0)
                 const loadAsIframe = groupIndex === 0;
                 const videoDiv = this.createVideoElement(video, loadAsIframe);
                 groupDiv.appendChild(videoDiv);
@@ -97,37 +97,38 @@ class YouTubeCarousel {
         videoDiv.dataset.videoId = video.id;
         videoDiv.dataset.videoTitle = video.title;
         
-        if (loadAsIframe) {
-            // Cargar directamente como iframe
-            videoDiv.innerHTML = `
-                <iframe src="https://www.youtube.com/embed/${video.id}?rel=0&showinfo=0"
-                        title="${video.title}"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen
-                        style="width: 100%; height: 100%;">
-                </iframe>
-            `;
-        } else {
-            // Crear thumbnail en lugar de iframe para lazy loading
+        // SIEMPRE usar facade pattern para mejor rendimiento
+        // Ahorro: ~1.5MB por video
+        if (true) { // Cambiado de loadAsIframe a siempre usar facade
+            // Usar thumbnail de mejor calidad (hqdefault) que es más ligera
             videoDiv.innerHTML = `
                 <div class="youtube-thumbnail" style="position: relative; width: 100%; height: 100%; cursor: pointer; background: #000;">
-                    <img src="https://img.youtube.com/vi/${video.id}/maxresdefault.jpg" 
+                    <img src="https://i.ytimg.com/vi/${video.id}/hqdefault.jpg" 
                          alt="${video.title}"
                          style="width: 100%; height: 100%; object-fit: cover;"
-                         loading="lazy">
-                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 68px; height: 48px; background: rgba(255, 0, 0, 0.8); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                        <svg height="100%" version="1.1" viewBox="0 0 68 48" width="100%">
+                         loading="lazy"
+                         decoding="async">
+                    <button class="youtube-play-btn" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 68px; height: 48px; background: transparent; border: none; cursor: pointer; padding: 0; transition: transform 0.2s ease;" aria-label="Reproducir ${video.title}">
+                        <svg height="100%" version="1.1" viewBox="0 0 68 48" width="100%" style="filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));">
                             <path d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#f00"></path>
                             <path d="M 45,24 27,14 27,34" fill="#fff"></path>
                         </svg>
-                    </div>
+                    </button>
                 </div>
             `;
             
             // Agregar evento click para cargar el iframe
-            videoDiv.addEventListener('click', () => {
+            const playBtn = videoDiv.querySelector('.youtube-play-btn');
+            playBtn.addEventListener('click', () => {
                 this.loadVideoIframe(videoDiv, video);
+            });
+            
+            // Hover effect
+            playBtn.addEventListener('mouseenter', () => {
+                playBtn.style.transform = 'translate(-50%, -50%) scale(1.1)';
+            });
+            playBtn.addEventListener('mouseleave', () => {
+                playBtn.style.transform = 'translate(-50%, -50%) scale(1)';
             });
         }
         
@@ -180,7 +181,7 @@ class YouTubeCarousel {
         groups.forEach((group, index) => {
             if (index === groupIndex) {
                 group.style.display = 'flex';
-                // Cargar iframes del grupo visible
+                // Siempre cargar iframes del grupo visible
                 this.loadGroupIframes(group);
             } else {
                 group.style.display = 'none';

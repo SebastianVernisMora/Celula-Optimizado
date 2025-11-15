@@ -1,0 +1,65 @@
+# Blackbox CLI
+.blackbox/
+
+# Node modules
+node_modules/
+package-lock.json
+
+# Archivos de backup
+*_backup/
+*.backup
+*.bak
+
+# Archivos temporales
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Archivos de desarrollo/testing
+test-*.html
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist-python/
+build/
+*.pyc
+
+# Scripts de actualización temporal
+update_posts.py
+
+# Archivos de IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Archivos de sistema
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+# Archivos de Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Archivos generados (se crean con scripts)
+dist/
+assets/gallery_backup/
+css/critical.css

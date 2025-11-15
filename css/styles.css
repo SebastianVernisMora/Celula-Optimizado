@@ -124,6 +124,7 @@ html, body {
     padding: 0 20px;
     display: flex;
     justify-content: center;
+    position: relative;
 }
 
 .nav-menu {
@@ -336,7 +337,8 @@ html, body {
     width: 39px;
     height: 39px;
     border-radius: 50%;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: brightness(0) invert(1);
 }
 
 .social-icon:hover {
@@ -622,13 +624,14 @@ html, body {
 }
 
 .footer-social .social-icon {
-    filter: grayscale(1);
-    opacity: 0.7;
+    filter: brightness(0) invert(1);
+    opacity: 0.8;
 }
 
 .footer-social .social-icon:hover {
-    filter: grayscale(0);
+    filter: brightness(0) invert(1);
     opacity: 1;
+    transform: scale(1.1);
 }
 
 .footer-text {
@@ -672,12 +675,19 @@ html, body {
         left: 0;
         right: 0;
         padding: 20px;
-        display: none;
+        opacity: 0;
+        visibility: hidden;
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.3s ease;
         z-index: 9999;
     }
 
     .nav-menu.active {
         display: flex;
+        opacity: 1;
+        visibility: visible;
+        max-height: 500px;
     }
 
     .hero-logo {
@@ -1443,7 +1453,12 @@ img[loading="lazy"].loaded {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 5px;
+    padding: 10px;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10001;
 }
 
 .mobile-menu-toggle span {
@@ -1452,6 +1467,19 @@ img[loading="lazy"].loaded {
     background: var(--primary-text);
     margin: 3px 0;
     transition: 0.3s;
+    display: block;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
 }
 
 @media (max-width: 768px) {
@@ -1482,18 +1510,6 @@ img[loading="lazy"].loaded {
         opacity: 1;
         visibility: visible;
         max-height: 500px;
-    }
-
-    .mobile-menu-toggle.active span:nth-child(1) {
-        transform: rotate(-45deg) translate(-5px, 6px);
-    }
-
-    .mobile-menu-toggle.active span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .mobile-menu-toggle.active span:nth-child(3) {
-        transform: rotate(45deg) translate(-5px, -6px);
     }
 }
 
