@@ -163,11 +163,12 @@ class PersistentVideoBackground {
 
             /* Mobile-specific optimizations */
             @media (max-width: ${this.options.mobileBreakpoint}px) {
+                /* Show video on mobile but with performance considerations */
                 .persistent-video-container {
-                    display: none;
+                    /* Don't hide on mobile anymore */
                 }
 
-                /* Alternative background for mobile */
+                /* Alternative background for mobile as fallback */
                 .persistent-video-mobile-bg {
                     position: fixed;
                     top: 0;
@@ -184,13 +185,14 @@ class PersistentVideoBackground {
                 .persistent-video-mobile-bg.active {
                     opacity: 1;
                 }
-            }
-            
-            /* Better performance on mobile devices */
-            @media (max-width: ${this.options.mobileBreakpoint}px) {
-                .persistent-video-container,
-                .persistent-video-bg video {
-                    display: none !important;
+
+                /* Mobile-specific video styling */
+                .persistent-video-container video {
+                    /* Use more efficient rendering on mobile */
+                    -webkit-transform: translateZ(0);
+                    -moz-transform: translateZ(0);
+                    -ms-transform: translateZ(0);
+                    transform: translateZ(0);
                 }
             }
         `;
@@ -219,28 +221,55 @@ class PersistentVideoBackground {
     
     applyVideoBackground() {
         if (this.isMobile) {
-            // On mobile devices, show fallback background instead of video
-            this.container.style.display = 'none';
-            
-            // Create mobile background if it doesn't exist
+            // On mobile devices, try to show video but with performance considerations
+            this.container.style.display = 'block';
+
+            // Create mobile background if it doesn't exist (as fallback)
             let mobileBg = document.querySelector('.persistent-video-mobile-bg');
             if (!mobileBg) {
                 mobileBg = document.createElement('div');
                 mobileBg.className = 'persistent-video-mobile-bg';
                 document.body.appendChild(mobileBg);
             }
-            
+
             // Apply the fallback background as a CSS background
             mobileBg.style.background = `url(${this.options.fallbackImage}) center/cover no-repeat fixed`;
-            mobileBg.classList.add('active');
-            
-            // Hide the video container
-            this.container.classList.remove('active');
+
+            // Show the video container with active class
+            this.container.classList.add('active');
+            mobileBg.classList.remove('active'); // Hide fallback since we're showing video
+
+            // Check if video can play on mobile - some mobile browsers don't support autoplay
+            this.checkMobileVideoPlayback();
         } else {
             // On desktop, show the video background
             document.querySelector('.persistent-video-mobile-bg')?.classList.remove('active');
             this.container.style.display = 'block';
             this.container.classList.add('active');
+        }
+    }
+
+    checkMobileVideoPlayback() {
+        if (this.isMobile && this.videoElement) {
+            // Try to play the video, and if it fails, fallback to the image background
+            const playPromise = this.videoElement.play();
+
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    // Video played successfully, hide fallback background
+                    const mobileBg = document.querySelector('.persistent-video-mobile-bg');
+                    if (mobileBg) {
+                        mobileBg.classList.remove('active');
+                    }
+                }).catch(error => {
+                    console.warn('Mobile video playback failed:', error);
+                    // Video couldn't play, show fallback background
+                    const mobileBg = document.querySelector('.persistent-video-mobile-bg');
+                    if (mobileBg) {
+                        mobileBg.classList.add('active');
+                    }
+                });
+            }
         }
     }
     

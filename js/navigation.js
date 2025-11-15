@@ -9,27 +9,45 @@ document.addEventListener('DOMContentLoaded', function() {
     // ===== NAVEGACIÓN SUAVE =====
     function initSmoothScrolling() {
         const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
-        
+
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href').substring(1);
                 const targetElement = document.getElementById(targetId);
-                
+
                 if (targetElement) {
+                    // Temporarily disable scroll spy during scroll
+                    const observer = window.celulaScrollSpyObserver;
+                    if (observer) {
+                        observer.disconnect();
+                    }
+
                     const headerHeight = document.querySelector('.site-header').offsetHeight;
                     const targetPosition = targetElement.offsetTop - headerHeight - 20;
-                    
+
                     window.scrollTo({
                         top: targetPosition,
                         behavior: 'smooth'
                     });
-                    
+
                     // Actualizar estado activo
                     updateActiveNavLink(this);
-                    
+
                     // Cerrar menú móvil si está abierto
                     closeMobileMenu();
+
+                    // Re-enable scroll spy after a short delay
+                    setTimeout(() => {
+                        if (window.celulaScrollSpyObserver) {
+                            window.celulaScrollSpyObserver.observe(targetElement);
+                            // Re-observe all sections
+                            const sections = document.querySelectorAll('section[id]');
+                            sections.forEach(section => {
+                                window.celulaScrollSpyObserver.observe(section);
+                            });
+                        }
+                    }, 600); // Wait for scroll animation to complete
                 }
             });
         });
@@ -83,15 +101,15 @@ document.addEventListener('DOMContentLoaded', function() {
     function initScrollSpy() {
         const sections = document.querySelectorAll('section[id]');
         const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
-        
+
         if (sections.length === 0 || navLinks.length === 0) return;
-        
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const sectionId = entry.target.id;
                     const correspondingLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
-                    
+
                     if (correspondingLink) {
                         updateActiveNavLink(correspondingLink);
                     }
@@ -101,7 +119,10 @@ document.addEventListener('DOMContentLoaded', function() {
             threshold: 0.3,
             rootMargin: '-100px 0px -100px 0px'
         });
-        
+
+        // Store observer globally so it can be accessed by smooth scrolling function
+        window.celulaScrollSpyObserver = observer;
+
         sections.forEach(section => observer.observe(section));
     }
     
