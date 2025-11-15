@@ -92,11 +92,8 @@
                             </p>
                             <a href="post/post-1.html" class="btn btn-primary">Leer más</a>
                         </div>
-                    </article>
-                </div>
-
                 <!-- Todos los Posts -->
-                <div class="blog-posts-grid">
+                <div class="blog-posts-grid" id="blog-posts-container">
                     <!-- Post 1 -->
                     <article class="blog-post-card fade-in">
                         <div class="post-image">
@@ -294,7 +291,7 @@
                             <a href="post/post-12.html" class="btn btn-secondary">Leer más</a>
                         </div>
                     </article>
-                </div>/div>
+                </div>
 
                 <!-- Paginación -->
                 <nav class="pagination" style="margin-top: 60px; text-align: center;">
@@ -527,5 +524,96 @@
             }
         }
     </style>
+
+    <!-- Script de Paginación -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configuración de paginación
+            const postsPerPage = 6;
+            const container = document.getElementById('blog-posts-container');
+            const allPosts = Array.from(container.children);
+            const totalPages = Math.ceil(allPosts.length / postsPerPage);
+            let currentPage = 1;
+
+            // Ocultar todos los posts inicialmente
+            allPosts.forEach(post => post.style.display = 'none');
+
+            // Mostrar los primeros 6 posts
+            showPage(currentPage);
+
+            // Actualizar la paginación
+            updatePagination();
+
+            function showPage(pageNumber) {
+                // Calcular el índice de inicio y fin
+                const startIndex = (pageNumber - 1) * postsPerPage;
+                const endIndex = startIndex + postsPerPage;
+
+                // Ocultar todos los posts
+                allPosts.forEach(post => post.style.display = 'none');
+
+                // Mostrar solo los posts para la página actual
+                for (let i = startIndex; i < Math.min(endIndex, allPosts.length); i++) {
+                    allPosts[i].style.display = 'block';
+                }
+
+                // Actualizar la variable de página actual
+                currentPage = pageNumber;
+            }
+
+            function updatePagination() {
+                // Buscar el contenedor de paginación existente
+                const paginationContainer = document.querySelector('.pagination ul');
+                if (!paginationContainer) return;
+
+                // Limpiar el contenido actual
+                paginationContainer.innerHTML = '';
+
+                // Botón Anterior
+                const prevButton = document.createElement('li');
+                prevButton.innerHTML = `<a href="#" class="page-link" ${currentPage === 1 ? 'style="background: rgba(0,0,0,0.3);"' : ''}
+                    onclick="changePage(${currentPage > 1 ? currentPage - 1 : 1}); return false;">← Anterior</a>`;
+                paginationContainer.appendChild(prevButton);
+
+                // Números de página
+                for (let i = 1; i <= totalPages; i++) {
+                    const pageItem = document.createElement('li');
+                    pageItem.innerHTML = `<a href="#" class="page-link"
+                        style="display: inline-block; padding: 8px 16px;
+                        background: ${i === currentPage ? 'var(--button-blue)' : 'rgba(0,0,0,0.3)'};
+                        color: white; text-decoration: none; border-radius: 4px;"
+                        onclick="changePage(${i}); return false;">${i}</a>`;
+                    paginationContainer.appendChild(pageItem);
+                }
+
+                // Botón Siguiente
+                const nextButton = document.createElement('li');
+                nextButton.innerHTML = `<a href="#" class="page-link"
+                    ${currentPage === totalPages ? 'style="background: rgba(0,0,0,0.3);"' : ''}
+                    onclick="changePage(${currentPage < totalPages ? currentPage + 1 : totalPages}); return false;">Siguiente →</a>`;
+                paginationContainer.appendChild(nextButton);
+            }
+
+            // Función global para cambiar de página
+            window.changePage = function(pageNumber) {
+                if (pageNumber < 1 || pageNumber > totalPages) return;
+
+                showPage(pageNumber);
+                updatePagination();
+
+                // Desplazar hacia arriba para ver los resultados
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
+
+            // Inicializar estilos grid para los posts mostrados
+            function initGridStyles() {
+                container.style.display = 'grid';
+                container.style.gridTemplateColumns = 'repeat(auto-fill, minmax(350px, 1fr))';
+                container.style.gap = '30px';
+            }
+
+            initGridStyles();
+        });
+    </script>
 </body>
 </html>
