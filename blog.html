@@ -528,15 +528,146 @@
     <!-- Script de Paginación -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Configuración de paginación
+            // Configuración de paginación dinámica para posts
             const postsPerPage = 6;
-            const container = document.getElementById('blog-posts-container');
-            const allPosts = Array.from(container.children);
-            const totalPages = Math.ceil(allPosts.length / postsPerPage);
-            let currentPage = 1;
 
-            // Ocultar todos los posts inicialmente
-            allPosts.forEach(post => post.style.display = 'none');
+            // Lista de posts (se puede actualizar automáticamente cuando se agregan nuevos posts)
+            const blogPosts = [
+                {
+                    id: 'post-1',
+                    title: 'De los 80s a Hoy: Un Viaje por el Repertorio Musical de La Célula',
+                    excerpt: 'Descubre cómo nuestro repertorio atraviesa generaciones, desde los clásicos ochenteros hasta los éxitos actuales.',
+                    date: '14 nov 2025',
+                    category: 'Música',
+                    image: 'assets/gallery/banda-1.jpg',
+                    url: 'post/post-1.html'
+                },
+                {
+                    id: 'post-2',
+                    title: 'Cómo Elegir la Música Correcta para tu Próximo Evento Corporativo',
+                    excerpt: 'La música adecuada puede hacer que tu evento corporativo sea inolvidable. Descubre cómo elegir el estilo perfecto.',
+                    date: '11 nov 2025',
+                    category: 'Eventos',
+                    image: 'assets/gallery/banda-2.jpg',
+                    url: 'post/post-2.html'
+                },
+                {
+                    id: 'post-3',
+                    title: '¿DJ o Grupo en Vivo? 7 Razones por las que la Música en Vivo Hará Inolvidable tu Evento',
+                    excerpt: 'Conoce las 7 razones por las que la música en vivo supera a un DJ en cualquier celebración.',
+                    date: '08 nov 2025',
+                    category: 'Eventos',
+                    image: 'assets/gallery/banda-3.jpg',
+                    url: 'post/post-3.html'
+                },
+                {
+                    id: 'post-4',
+                    title: '5 Géneros Musicales que no Pueden Faltar en tu Boda para que Todos Bailen',
+                    excerpt: 'Los géneros musicales esenciales para garantizar que todos los invitados disfruten en la pista de baile.',
+                    date: '05 nov 2025',
+                    category: 'Bodas',
+                    image: 'assets/gallery/banda-4.jpg',
+                    url: 'post/post-4.html'
+                },
+                {
+                    id: 'post-5',
+                    title: 'Cómo Lograr que tu Boda se Convierta en la Fiesta del Año con Música en Vivo',
+                    excerpt: 'Consejos profesionales para que tu boda sea recordada como la celebración más espectacular.',
+                    date: '02 nov 2025',
+                    category: 'Bodas',
+                    image: 'assets/gallery/banda-5.jpg',
+                    url: 'post/post-5.html'
+                },
+                {
+                    id: 'post-6',
+                    title: 'Guía Paso a Paso: Cómo Contratar a Célula para tu Evento',
+                    excerpt: 'Todo lo que necesitas saber para contratar nuestros servicios de manera fácil y segura.',
+                    date: '30 oct 2025',
+                    category: 'Guías',
+                    image: 'assets/gallery/banda-6.jpg',
+                    url: 'post/post-6.html'
+                },
+                {
+                    id: 'post-7',
+                    title: '5 Momentos Clave donde la Música en Vivo Cambia tu Evento por Completo',
+                    excerpt: 'Identifica los momentos cruciales donde la música en vivo marca la diferencia en tu celebración.',
+                    date: '27 oct 2025',
+                    category: 'Eventos',
+                    image: 'assets/gallery/banda-7.jpg',
+                    url: 'post/post-7.html'
+                },
+                {
+                    id: 'post-8',
+                    title: 'Creando el Ambiente Perfecto: La Mejor Música para la Recepción de tu Boda',
+                    excerpt: 'Cómo crear la atmósfera ideal desde el primer momento de tu recepción nupcial.',
+                    date: '24 oct 2025',
+                    category: 'Bodas',
+                    image: 'assets/gallery/banda-8.jpg',
+                    url: 'post/post-8.html'
+                },
+                {
+                    id: 'post-9',
+                    title: 'Más que Canciones: Los Beneficios Psicológicos de la Música en Vivo en tu Evento',
+                    excerpt: 'Descubre cómo la música en vivo impacta positivamente en las emociones de tus invitados.',
+                    date: '21 oct 2025',
+                    category: 'Música',
+                    image: 'assets/gallery/banda-9.jpg',
+                    url: 'post/post-9.html'
+                },
+                {
+                    id: 'post-10',
+                    title: 'Cómo Crear la Playlist Perfecta para tu Boda (y por qué es mejor dejarlo a un profesional)',
+                    excerpt: 'La importancia de confiar en profesionales para la selección musical de tu día especial.',
+                    date: '18 oct 2025',
+                    category: 'Bodas',
+                    image: 'assets/gallery/banda-10.jpg',
+                    url: 'post/post-10.html'
+                },
+                {
+                    id: 'post-11',
+                    title: '¿Qué Equipo de Sonido Necesita una Banda para un Evento? Lo que Debes Saber',
+                    excerpt: 'Todo sobre el equipo profesional que garantiza la calidad de sonido en tu evento.',
+                    date: '15 oct 2025',
+                    category: 'Técnico',
+                    image: 'assets/gallery/banda-1.jpg',
+                    url: 'post/post-11.html'
+                }
+            ];
+
+            const container = document.getElementById('blog-posts-container');
+
+            // Función para crear un artículo de blog
+            function createBlogPost(post) {
+                const article = document.createElement('article');
+                article.className = 'blog-post-card fade-in';
+
+                article.innerHTML = `
+                    <div class="post-image">
+                        <img src="${post.image}" alt="${post.title}" class="post-img">
+                    </div>
+                    <div class="post-content-card">
+                        <div class="post-meta">
+                            <span class="post-category">${post.category}</span>
+                            <span class="post-date">${post.date}</span>
+                        </div>
+                        <h3 class="post-title">${post.title}</h3>
+                        <p class="post-excerpt">${post.excerpt}</p>
+                        <a href="${post.url}" class="btn btn-secondary">Leer más</a>
+                    </div>
+                `;
+
+                return article;
+            }
+
+            // Crear todos los posts y almacenarlos
+            const allPosts = blogPosts.map(post => createBlogPost(post));
+
+            // Limpiar el contenedor y agregar los posts
+            container.innerHTML = '';
+            allPosts.forEach(post => container.appendChild(post));
+
+            const totalPages = Math.ceil(blogPosts.length / postsPerPage);
+            let currentPage = 1;
 
             // Mostrar los primeros 6 posts
             showPage(currentPage);
