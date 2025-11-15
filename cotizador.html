@@ -69,33 +69,43 @@
 
                             <input type="hidden" name="access_key" value="962105fc-38f8-49cd-87d4-a86a13e5af0a">
 
-                            <div class="mb-4">
-                                <label for="name" class="block mb-2 text-white font-bold">Nombre</label>
-                                <input type="text" id="name" name="name" required="" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                            <div class="form-group" style="margin-bottom: 20px;">
+                                <label for="name" style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--content-text);">Nombre *</label>
+                                <input type="text" id="name" name="name" required
+                                       style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: var(--border-radius); font: var(--font-body);">
                             </div>
-                            <div class="mb-4">
-                                <label for="number" class="block text-white mb-2 font-bold">Número telefónico</label>
-                                <input type="number" id="number" name="number" required="" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                            <div class="form-group" style="margin-bottom: 20px;">
+                                <label for="number" style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--content-text);">Número telefónico *</label>
+                                <input type="number" id="number" name="number" required
+                                       style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: var(--border-radius); font: var(--font-body);">
                             </div>
-                            <div class="mb-4">
-                                <label for="email" class="block text-white mb-2 font-bold">Email</label>
-                                <input type="email" id="email" name="email" required="" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                            <div class="form-group" style="margin-bottom: 20px;">
+                                <label for="email" style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--content-text);">Email *</label>
+                                <input type="email" id="email" name="email" required
+                                       style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: var(--border-radius); font: var(--font-body);">
                             </div>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
                                 <div>
-                                    <label for="event-type" class="block mb-2 text-white font-bold">Tipo de Evento</label>
-                                    <select id="event-type" name="event-type" required="" class="w-full bg-gray-800 border text-white border-gray-700 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                                        <option>Boda</option><option>XV Años</option><option>Corporativo</option><option>Otro</option>
+                                    <label for="event-type" style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--content-text);">Tipo de Evento *</label>
+                                    <select id="event-type" name="event-type" required
+                                            style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: var(--border-radius); font: var(--font-body); color: var(--content-text);">
+                                        <option value="">Selecciona el tipo de evento</option>
+                                        <option value="boda">Boda</option>
+                                        <option value="xv">XV Años</option>
+                                        <option value="corporativo">Evento Corporativo</option>
+                                        <option value="otro">Otro</option>
                                     </select>
                                 </div>
                                 <div>
-                                    <label for="event-date" class="block mb-2 text-white font-bold">Fecha</label>
-                                    <input type="date" id="event-date" name="event-date" required="" class="w-full bg-gray-800 border text-white border-gray-700 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-yellow-500" style="color-scheme: dark;">
+                                    <label for="event-date" style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--content-text);">Fecha del evento *</label>
+                                    <input type="date" id="event-date" name="event-date" required
+                                           style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: var(--border-radius); font: var(--font-body); color: var(--content-text);">
                                 </div>
                             </div>
-                            <div class="mb-4">
-                                <label for="guests-contact" class="block mb-2 text-white font-bold">Número de Invitados</label>
-                                <select id="guests-contact" name="guests-contact" required="" class="w-full bg-gray-800 border border-gray-700 rounded-lg text-white p-3 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                            <div class="form-group" style="margin-bottom: 20px;">
+                                <label for="guests-contact" style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--content-text);">Número de Invitados</label>
+                                <select id="guests-contact" name="guests-contact"
+                                        style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: var(--border-radius); font: var(--font-body); color: var(--content-text);">
                                     <option value="">Selecciona el número de invitados</option>
                                     <option value="50-100">50-100 invitados</option>
                                     <option value="101-200">101-200 invitados</option>
@@ -103,28 +113,32 @@
                                     <option value="500+">Más de 500 invitados</option>
                                 </select>
                             </div>
-                            <div class="space-y-4 mb-4">
-                                <h3 class="font-bold text-white text-lg">Ubicación del Evento</h3>
-                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                    <div>
-                                        <label for="city-contact" class="block mb-2 text-white font-bold">Ciudad/Área Metropolitana</label>
-                                        <select id="city-contact" name="city-contact" required="" class="w-full text-white bg-gray-800 border border-gray-700 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                                            <option value="">Selecciona una ciudad</option>
-                                            <option value="cdmx">Ciudad de México (CDMX)</option>
-                                            <option value="estado-mexico">Estado de México</option>
-                                            <option value="morelos">Morelos</option>
-                                            <option value="puebla">Puebla</option>
-                                            <option value="hidalgo">Hidalgo</option>
-                                        </select>
-                                    </div>
+                            <div style="margin-bottom: 20px;">
+                                <h3 style="font-weight: bold; color: var(--content-text); font-size: 1.1rem; margin-bottom: 20px;">Ubicación del Evento</h3>
+                                <div>
+                                    <label for="city-contact" style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--content-text);">Ciudad/Área Metropolitana *</label>
+                                    <select id="city-contact" name="city-contact" required
+                                            style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: var(--border-radius); font: var(--font-body); color: var(--content-text);">
+                                        <option value="">Selecciona una ciudad</option>
+                                        <option value="cdmx">Ciudad de México (CDMX)</option>
+                                        <option value="estado-mexico">Estado de México</option>
+                                        <option value="morelos">Morelos</option>
+                                        <option value="puebla">Puebla</option>
+                                        <option value="hidalgo">Hidalgo</option>
+                                    </select>
                                 </div>
                             </div>
-                            <div class="mb-4">
-                                <label for="message" class="block text-white mb-2 font-bold">Mensaje</label>
-                                <textarea id="message" name="message" rows="4" class="w-full bg-gray-800 border text-white border-gray-700 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="Cuéntanos más..."></textarea>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 20px;">
+                                <label for="message" style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--content-text);">Mensaje</label>
+                                <textarea id="message" name="message" rows="4"
+                                          placeholder="Cuéntanos más..."
+                                          style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: var(--border-radius); font: var(--font-body); color: var(--content-text); resize: vertical;"></textarea>
                             </div>
 
-                            <button type="submit" class="w-full bg-yellow-500 text-gray-900 font-bold py-3 px-6 rounded-lg hover:bg-yellow-400 transition-colors">Enviar Solicitud</button>
+                            <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 16px; padding: 15px 30px;">
+                                Enviar Solicitud
+                            </button>
                         </form>
                     </div>
 

@@ -446,7 +446,7 @@
 
         .blog-posts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
             background: transparent;
         }
@@ -882,14 +882,6 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             };
 
-            // Inicializar estilos grid para los posts mostrados
-            function initGridStyles() {
-                container.style.display = 'grid';
-                container.style.gridTemplateColumns = 'repeat(auto-fill, minmax(350px, 1fr))';
-                container.style.gap = '30px';
-            }
-
-            initGridStyles();
         });
     </script>
 </body>
