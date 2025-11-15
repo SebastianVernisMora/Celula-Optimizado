@@ -24,6 +24,12 @@ npm-debug.log*
 # Archivos de desarrollo/testing
 test-*.html
 
+# Archivos PHP del chatbot obsoletos
+/chatbot_ai.php
+/chatbot_email_service.php
+/chatbot_mailer.php
+/chatbot-embed.html
+
 # Python scripts (solo para desarrollo local)
 *.py
 __pycache__/
@@ -44,6 +50,8 @@ build/
 # Documentación de desarrollo (solo para desarrollo local)
 *.md
 !README.md
+!AGENTS.md
+!CHATBOT-CONFIG.md
 *.txt
 !robots.txt
 
