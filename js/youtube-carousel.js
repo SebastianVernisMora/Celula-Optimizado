@@ -79,7 +79,9 @@ class YouTubeCarousel {
 
             for (let i = startIndex; i < endIndex; i++) {
                 const video = this.videos[i];
-                const videoDiv = this.createVideoElement(video);
+                // Cargar como iframe si es el primer grupo (groupIndex === 0)
+                const loadAsIframe = groupIndex === 0;
+                const videoDiv = this.createVideoElement(video, loadAsIframe);
                 groupDiv.appendChild(videoDiv);
             }
 
@@ -89,32 +91,45 @@ class YouTubeCarousel {
         }
     }
 
-    createVideoElement(video) {
+    createVideoElement(video, loadAsIframe = false) {
         const videoDiv = document.createElement('div');
         videoDiv.className = 'youtube-video';
         videoDiv.dataset.videoId = video.id;
         videoDiv.dataset.videoTitle = video.title;
         
-        // Crear thumbnail en lugar de iframe para lazy loading
-        videoDiv.innerHTML = `
-            <div class="youtube-thumbnail" style="position: relative; width: 100%; height: 100%; cursor: pointer; background: #000;">
-                <img src="https://img.youtube.com/vi/${video.id}/maxresdefault.jpg" 
-                     alt="${video.title}"
-                     style="width: 100%; height: 100%; object-fit: cover;"
-                     loading="lazy">
-                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 68px; height: 48px; background: rgba(255, 0, 0, 0.8); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                    <svg height="100%" version="1.1" viewBox="0 0 68 48" width="100%">
-                        <path d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#f00"></path>
-                        <path d="M 45,24 27,14 27,34" fill="#fff"></path>
-                    </svg>
+        if (loadAsIframe) {
+            // Cargar directamente como iframe
+            videoDiv.innerHTML = `
+                <iframe src="https://www.youtube.com/embed/${video.id}?rel=0&showinfo=0"
+                        title="${video.title}"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        style="width: 100%; height: 100%;">
+                </iframe>
+            `;
+        } else {
+            // Crear thumbnail en lugar de iframe para lazy loading
+            videoDiv.innerHTML = `
+                <div class="youtube-thumbnail" style="position: relative; width: 100%; height: 100%; cursor: pointer; background: #000;">
+                    <img src="https://img.youtube.com/vi/${video.id}/maxresdefault.jpg" 
+                         alt="${video.title}"
+                         style="width: 100%; height: 100%; object-fit: cover;"
+                         loading="lazy">
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 68px; height: 48px; background: rgba(255, 0, 0, 0.8); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                        <svg height="100%" version="1.1" viewBox="0 0 68 48" width="100%">
+                            <path d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#f00"></path>
+                            <path d="M 45,24 27,14 27,34" fill="#fff"></path>
+                        </svg>
+                    </div>
                 </div>
-            </div>
-        `;
-        
-        // Agregar evento click para cargar el iframe
-        videoDiv.addEventListener('click', () => {
-            this.loadVideoIframe(videoDiv, video);
-        });
+            `;
+            
+            // Agregar evento click para cargar el iframe
+            videoDiv.addEventListener('click', () => {
+                this.loadVideoIframe(videoDiv, video);
+            });
+        }
         
         return videoDiv;
     }
@@ -165,8 +180,8 @@ class YouTubeCarousel {
         groups.forEach((group, index) => {
             if (index === groupIndex) {
                 group.style.display = 'flex';
-                // Precargar thumbnails del grupo visible
-                this.preloadGroupThumbnails(group);
+                // Cargar iframes del grupo visible
+                this.loadGroupIframes(group);
             } else {
                 group.style.display = 'none';
                 // Descargar iframes de grupos no visibles para liberar memoria
@@ -177,12 +192,25 @@ class YouTubeCarousel {
         this.currentGroupIndex = groupIndex;
     }
 
-    preloadGroupThumbnails(group) {
+    loadGroupIframes(group) {
         const videos = group.querySelectorAll('.youtube-video');
         videos.forEach(videoDiv => {
-            const img = videoDiv.querySelector('img');
-            if (img && img.dataset.src) {
-                img.src = img.dataset.src;
+            // Si el video tiene thumbnail, convertirlo a iframe
+            const thumbnail = videoDiv.querySelector('.youtube-thumbnail');
+            if (thumbnail) {
+                const videoId = videoDiv.dataset.videoId;
+                const videoTitle = videoDiv.dataset.videoTitle;
+                if (videoId) {
+                    videoDiv.innerHTML = `
+                        <iframe src="https://www.youtube.com/embed/${videoId}?rel=0&showinfo=0"
+                                title="${videoTitle}"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
+                                style="width: 100%; height: 100%;">
+                        </iframe>
+                    `;
+                }
             }
         });
     }
