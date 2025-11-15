@@ -261,14 +261,14 @@ function determineRecommendedPackage(conversationData) {
   
   // Contar coincidencias para cada paquete
   const scores = {};
-  for (const package in patterns) {
+  for (const packageName in patterns) {
     let score = 0;
-    for (const keyword of patterns[package]) {
+    for (const keyword of patterns[packageName]) {
       if (userMessagesLower.includes(keyword)) {
         score++;
       }
     }
-    scores[package] = score;
+    scores[packageName] = score;
   }
   
   // Ordenar paquetes por puntuación
