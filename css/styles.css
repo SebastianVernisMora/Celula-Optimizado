@@ -665,13 +665,15 @@ html, body {
     .nav-menu {
         flex-direction: column;
         gap: 10px;
-        background: var(--overlay-bg);
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(10px);
         position: absolute;
         top: 100%;
         left: 0;
         right: 0;
         padding: 20px;
         display: none;
+        z-index: 9999;
     }
 
     .nav-menu.active {
@@ -1462,20 +1464,24 @@ img[loading="lazy"].loaded {
         top: 100%;
         left: 0;
         right: 0;
-        background: var(--overlay-bg);
+        background: rgba(0, 0, 0, 0.95);
         backdrop-filter: blur(10px);
         flex-direction: column;
         padding: 20px;
-        transform: translateY(-100%);
+        transform: translateY(0);
         opacity: 0;
         visibility: hidden;
         transition: all 0.3s ease;
+        z-index: 9999;
+        max-height: 0;
+        overflow: hidden;
     }
 
     .nav-menu.active {
         transform: translateY(0);
         opacity: 1;
         visibility: visible;
+        max-height: 500px;
     }
 
     .mobile-menu-toggle.active span:nth-child(1) {
@@ -2002,20 +2008,24 @@ img[loading="lazy"].loaded {
                 top: 100%;
                 left: 0;
                 right: 0;
-                background: var(--overlay-bg);
+                background: rgba(0, 0, 0, 0.95);
                 backdrop-filter: blur(10px);
                 flex-direction: column;
                 padding: 20px;
-                transform: translateY(-100%);
+                transform: translateY(0);
                 opacity: 0;
                 visibility: hidden;
                 transition: all 0.3s ease;
+                z-index: 9999;
+                max-height: 0;
+                overflow: hidden;
             }
 
             .nav-menu.active {
                 transform: translateY(0);
                 opacity: 1;
                 visibility: visible;
+                max-height: 500px;
             }
 
             .cotizador-form {

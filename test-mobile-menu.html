@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Test Menú Móvil - 375px</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Forzar vista móvil */
+        body {
+            margin: 0;
+            padding: 0;
+            max-width: 375px;
+            margin: 0 auto;
+        }
+        .test-section {
+            padding: 100px 20px;
+            background: #333;
+            color: white;
+            text-align: center;
+            min-height: 300px;
+        }
+        .test-section h2 {
+            margin-bottom: 20px;
+        }
+        .debug-info {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #0f0;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 12px;
+            z-index: 99999;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header y Navegación -->
+    <header class="site-header" id="SITE_HEADER">
+        <nav class="nav-container">
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="#test1" class="nav-link active">INICIO</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#test2" class="nav-link">COTIZADOR</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#test3" class="nav-link">BLOG</a>
+                </li>
+            </ul>
+
+            <!-- Menú móvil -->
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <div class="test-section" id="test1" style="margin-top: 55px;">
+        <h2>Test Menú Móvil</h2>
+        <p>Haz clic en el botón hamburguesa (☰) en la esquina superior derecha.</p>
+        <p>El menú debería desplegarse hacia abajo.</p>
+    </div>
+
+    <div class="test-section" id="test2" style="background: #444;">
+        <h2>Sección 2</h2>
+        <p>Contenido de prueba</p>
+    </div>
+
+    <div class="test-section" id="test3" style="background: #555;">
+        <h2>Sección 3</h2>
+        <p>Más contenido de prueba</p>
+    </div>
+
+    <div class="debug-info" id="debug-info">
+        Ancho: <span id="width">0</span>px<br>
+        Menú activo: <span id="menu-active">No</span><br>
+        Toggle visible: <span id="toggle-visible">No</span>
+    </div>
+
+    <script src="js/navigation.js"></script>
+    <script>
+        // Debug info
+        function updateDebugInfo() {
+            const navMenu = document.getElementById('nav-menu');
+            const mobileToggle = document.getElementById('mobile-menu-toggle');
+            
+            document.getElementById('width').textContent = window.innerWidth;
+            document.getElementById('menu-active').textContent = navMenu.classList.contains('active') ? 'Sí' : 'No';
+            
+            const toggleStyle = window.getComputedStyle(mobileToggle);
+            document.getElementById('toggle-visible').textContent = toggleStyle.display !== 'none' ? 'Sí' : 'No';
+        }
+        
+        setInterval(updateDebugInfo, 100);
+        
+        // Log clicks
+        document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+            console.log('🔘 Click en botón hamburguesa');
+            console.log('📱 Clases del menú:', document.getElementById('nav-menu').className);
+        });
+    </script>
+</body>
+</html>
