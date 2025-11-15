@@ -9,6 +9,7 @@ package-lock.json
 *_backup/
 *.backup
 *.bak
+assets/gallery_backup/
 
 # Archivos temporales
 *.tmp
@@ -23,7 +24,8 @@ npm-debug.log*
 # Archivos de desarrollo/testing
 test-*.html
 
-# Python
+# Python scripts (solo para desarrollo local)
+*.py
 __pycache__/
 *.py[cod]
 *.pyo
@@ -36,8 +38,14 @@ dist-python/
 build/
 *.pyc
 
-# Scripts de actualización temporal
-update_posts.py
+# Scripts de optimización (solo para desarrollo local)
+*.sh
+
+# Documentación de desarrollo (solo para desarrollo local)
+*.md
+!README.md
+*.txt
+!robots.txt
 
 # Archivos de IDE
 .vscode/
@@ -61,5 +69,7 @@ $RECYCLE.BIN/
 
 # Archivos generados (se crean con scripts)
 dist/
-assets/gallery_backup/
 css/critical.css
+
+# Archivos JavaScript de desarrollo
+extract-critical-css.js
