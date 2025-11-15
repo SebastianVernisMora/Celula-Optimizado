@@ -1,14 +1,17 @@
 /* ===== ESTILOS ESPECÍFICOS PARA EL BLOG ===== */
 .hero-section { 
-    background: #333 !important;
+    background: transparent !important;
+    position: relative;
+    z-index: 10;
 }
 
 .content-section { 
-    background: #1a1a1a !important;
+    background: rgba(26, 26, 26, 0.7) !important;
     min-height: auto !important;
     padding: 4rem 0 !important;
     position: relative !important;
     z-index: 10 !important;
+    backdrop-filter: blur(5px);
 }
 
 .main-content {
@@ -27,7 +30,7 @@
 
 .blog-post-featured {
     display: flex;
-    background: var(--card-bg);
+    background: rgba(0, 0, 0, 0.6);
     border-radius: var(--border-radius);
     overflow: hidden;
     box-shadow: var(--card-shadow);
@@ -62,7 +65,7 @@
 }
 
 .blog-post-card {
-    background: var(--card-bg) !important;
+    background: rgba(0, 0, 0, 0.6) !important;
     border-radius: var(--border-radius) !important;
     overflow: hidden !important;
     box-shadow: var(--card-shadow) !important;
@@ -163,7 +166,7 @@
 .page-link {
     display: inline-block;
     padding: 0.75rem 1rem;
-    background: var(--card-bg);
+    background: rgba(0, 0, 0, 0.6);
     color: white;
     text-decoration: none;
     border-radius: var(--button-radius);
