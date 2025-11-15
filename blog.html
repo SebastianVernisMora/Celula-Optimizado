@@ -31,6 +31,7 @@
 
     <!-- Estilos limpios -->
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/blog.css">
 </head>
 <body>
   <header class="site-header" id="SITE_HEADER">
@@ -69,6 +70,8 @@
         <!-- Contenido del Blog -->
         <section class="content-section">
             <div class="main-content">
+
+                
                 <!-- Posts Destacados -->
                 <div class="blog-featured blog-featured-container">
                     <!-- Post Principal -->
@@ -95,6 +98,9 @@
                             </p>
                             <a href="post/post-0.html" class="btn btn-primary">Leer más</a>
                         </div>
+                    </article>
+                </div>
+
                 <!-- Todos los Posts -->
                 <div class="blog-posts-grid" id="blog-posts-container">
                     <!-- Los posts se cargan dinámicamente desde blog-pagination.js -->
@@ -103,10 +109,7 @@
                 <!-- Paginación -->
                 <nav class="pagination pagination-container">
                     <ul class="pagination-list">
-                        <li><a href="../contacto.html" class="page-link page-link-active">1</a></li>
-                        <li><a href="../contacto.html" class="page-link page-link-inactive">2</a></li>
-                        <li><a href="../contacto.html" class="page-link page-link-inactive">3</a></li>
-                        <li><a href="../contacto.html" class="page-link page-link-active page-link-next">Siguiente →</a></li>
+                        <!-- Los botones de paginación se generan dinámicamente desde blog-pagination.js -->
                     </ul>
                 </nav>
             </div>
@@ -159,8 +162,8 @@
     <script src="js/navigation.js"></script>
     <script src="js/optimizations.js"></script>
 
-    <!-- Persistent Video Background -->
-    <script src="js/video-background.js"></script>
+    <!-- Persistent Video Background - Comentado para el blog -->
+    <!-- <script src="js/video-background.js"></script> -->
 
     <!-- Estilos específicos para el blog -->
 
