@@ -928,7 +928,7 @@ img[loading="lazy"].loaded {
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
+    gap: 2.5rem; /* Aumentar espacio entre imágenes */
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -974,12 +974,12 @@ img[loading="lazy"].loaded {
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0;
+    opacity: 0 !important; /* Desactivar completamente el efecto hover en galería */
     transition: opacity 0.3s ease;
 }
 
 .gallery-item:hover .gallery-overlay {
-    opacity: 1;
+    opacity: 0 !important; /* Asegurar que no aparezca en hover */
 }
 
 .gallery-text {
@@ -1485,11 +1485,19 @@ img[loading="lazy"].loaded {
     transition: transform 0.3s ease;
 }
 
-.gallery-item {
-    flex: 0 0 auto; /* Permitir que el JavaScript controle el tamaño */
-    margin: 0 10px; /* Agregar margen entre imágenes */
-    border-radius: 12px; /* Mantener bordes redondeados */
-    overflow: hidden; /* Asegurar bordes redondeados se mantengan */
+/* Ajustar imágenes específicamente en el carrusel para mantener proporción */
+.carousel-track .gallery-item .gallery-image {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 4/3 !important;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+/* El hover específico para carrusel se mantiene ligeramente diferente para efectos de transición */
+.carousel-track .gallery-item:hover .gallery-image {
+    transform: scale(1.05);
 }
 
 /* Asegurar que el primer y último elemento no tengan márgenes externos */
