@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Blog - Grupo Musical Versátil La Célula</title>
+    <meta name="description" content="Blog del Grupo Musical Versátil La Célula - Noticias, eventos y novedades musicales.">
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/logo/logo.jpg" type="image/jpeg">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster:wght@400&family=Open+Sans:wght@400;600;700&family=Raleway:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Estilos limpios -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header y Navegación -->
+    <header class="site-header" id="SITE_HEADER">
+        <nav class="nav-container">
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">INICIO</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#servicios" class="nav-link">SERVICIOS</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#banda" class="nav-link">LA BANDA</a>
+                </li>
+                <li class="nav-item">
+                    <a href="cotizador.html" class="nav-link">COTIZADOR</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link active">Blog</a>
+                </li>
+            </ul>
+
+            <!-- Menú móvil -->
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="site-container">
+        <!-- Hero del Blog -->
+        <section class="hero-section" id="hero">
+            <div class="hero-video-container">
+                <video autoplay muted loop playsinline class="hero-background-video">
+                    <source src="assets/video/background-video.mp4" type="video/mp4">
+                    Tu navegador no soporta el elemento de video.
+                </video>
+                <div class="video-overlay"></div>
+            </div>
+            <div class="hero-content fade-in">
+                <h1 class="section-title">Blog Musical</h1>
+                <p class="hero-title">Noticias, eventos y novedades de La Célula</p>
+            </div>
+        </section>
+
+        <!-- Contenido del Blog -->
+        <section class="content-section">
+            <div class="main-content">
+                <!-- Navegación del Blog -->
+                <nav class="blog-nav" style="margin-bottom: 40px; text-align: center;">
+                    <ul style="display: flex; justify-content: center; gap: 30px; list-style: none; flex-wrap: wrap;">
+                        <li><a href="#" class="nav-link active" style="color: var(--content-text);">Todas las publicaciones</a></li>
+                        <li><a href="#" class="nav-link" style="color: var(--content-text);">Eventos</a></li>
+                        <li><a href="#" class="nav-link" style="color: var(--content-text);">Música</a></li>
+                        <li><a href="#" class="nav-link" style="color: var(--content-text);">Conciertos</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Posts Destacados -->
+                <div class="blog-featured" style="margin-bottom: 60px;">
+                    <!-- Post Principal -->
+                    <article class="blog-post-featured fade-in">
+                        <div class="post-image">
+                            <img src="assets/gallery/banda-1.jpg" alt="Bienvenidos al Mundo Musical" class="post-img">
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span class="post-category">Música</span>
+                                <span class="post-date">30 jul 2024</span>
+                            </div>
+                            <h2 class="post-title">🎶 Bienvenidos al Mundo Musical de Grupo Musical Versátil La Célula</h2>
+                            <div class="post-author">
+                                <img src="https://via.placeholder.com/40x40/3d9be9/ffffff?text=GR" alt="Giovanni Rocha" class="author-avatar">
+                                <div>
+                                    <div class="author-name">Giovanni Rocha Urzua</div>
+                                    <div class="post-stats">1 Min. de lectura</div>
+                                </div>
+                            </div>
+                            <p class="post-excerpt">
+                                En Grupo Musical Versátil La Célula creemos que la música no solo se escucha, se vive.
+                                Nuestro objetivo es crear atmósferas memorables para cada evento especial...
+                            </p>
+                            <a href="post/bienvenida-grupo-musical-la-celula.html" class="btn btn-primary">Leer más</a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Todos los Posts -->
+                <div class="blog-posts-grid">
+                    <!-- Post 1 -->
+                    <article class="blog-post-card fade-in">
+                        <div class="post-image">
+                            <img src="assets/gallery/banda-2.jpg" alt="Preparación para evento" class="post-img">
+                        </div>
+                        <div class="post-content-card">
+                            <div class="post-meta">
+                                <span class="post-category">Eventos</span>
+                                <span class="post-date">25 jul 2024</span>
+                            </div>
+                            <h3 class="post-title">Preparación para eventos especiales</h3>
+                            <p class="post-excerpt">
+                                Cómo nos preparamos para cada evento y los detalles que hacemos para que tu celebración sea perfecta.
+                            </p>
+                            <a href="post/preparacion-eventos-especiales.html" class="btn btn-secondary">Leer más</a>
+                        </div>
+                    </article>
+
+                    <!-- Post 2 -->
+                    <article class="blog-post-card fade-in">
+                        <div class="post-image">
+                            <img src="assets/gallery/banda-3.jpg" alt="Historia del grupo" class="post-img">
+                        </div>
+                        <div class="post-content-card">
+                            <div class="post-meta">
+                                <span class="post-category">Historia</span>
+                                <span class="post-date">20 jul 2024</span>
+                            </div>
+                            <h3 class="post-title">Nuestra historia musical</h3>
+                            <p class="post-excerpt">
+                                Cómo comenzó Grupo Musical Versátil La Célula y los hitos más importantes de nuestra trayectoria.
+                            </p>
+                            <a href="post/historia-musical.html" class="btn btn-secondary">Leer más</a>
+                        </div>
+                    </article>
+
+                    <!-- Post 3 -->
+                    <article class="blog-post-card fade-in">
+                        <div class="post-image">
+                            <img src="assets/gallery/banda-4.jpg" alt="Conciertos destacados" class="post-img">
+                        </div>
+                        <div class="post-content-card">
+                            <div class="post-meta">
+                                <span class="post-category">Conciertos</span>
+                                <span class="post-date">15 jul 2024</span>
+                            </div>
+                            <h3 class="post-title">Conciertos que marcaron historia</h3>
+                            <p class="post-excerpt">
+                                Un recuento de los conciertos más memorables y emocionantes de Grupo Musical Versátil La Célula.
+                            </p>
+                            <a href="post/conciertos-marcados-historia.html" class="btn btn-secondary">Leer más</a>
+                        </div>
+                    </article>
+
+                    <!-- Post 4 -->
+                    <article class="blog-post-card fade-in">
+                        <div class="post-image">
+                            <img src="assets/gallery/banda-5.jpg" alt="Música para eventos corporativos" class="post-img">
+                        </div>
+                        <div class="post-content-card">
+                            <div class="post-meta">
+                                <span class="post-category">Eventos</span>
+                                <span class="post-date">10 jul 2024</span>
+                            </div>
+                            <h3 class="post-title">Música para eventos corporativos</h3>
+                            <p class="post-excerpt">
+                                Cómo la música puede transformar un evento corporativo y consejos para elegir el repertorio ideal.
+                            </p>
+                            <a href="post/musica-eventos-corporativos.html" class="btn btn-secondary">Leer más</a>
+                        </div>
+                    </article>
+
+                    <!-- Post 5 -->
+                    <article class="blog-post-card fade-in">
+                        <div class="post-image">
+                            <img src="assets/gallery/banda-6.jpg" alt="Preparación de repertorio" class="post-img">
+                        </div>
+                        <div class="post-content-card">
+                            <div class="post-meta">
+                                <span class="post-category">Música</span>
+                                <span class="post-date">5 jul 2024</span>
+                            </div>
+                            <h3 class="post-title">Cómo elegimos nuestro repertorio</h3>
+                            <p class="post-excerpt">
+                                El proceso que seguimos para seleccionar las canciones perfectas para cada tipo de evento.
+                            </p>
+                            <a href="post/repertorio-musical.html" class="btn btn-secondary">Leer más</a>
+                        </div>
+                    </article>
+
+                    <!-- Post 6 -->
+                    <article class="blog-post-card fade-in">
+                        <div class="post-image">
+                            <img src="assets/gallery/banda-7.jpg" alt="Tras bambalinas" class="post-img">
+                        </div>
+                        <div class="post-content-card">
+                            <div class="post-meta">
+                                <span class="post-category">Tras bambalinas</span>
+                                <span class="post-date">1 jul 2024</span>
+                            </div>
+                            <h3 class="post-title">Tras bambalinas con La Célula</h3>
+                            <p class="post-excerpt">
+                                Un vistazo detrás de escena de lo que sucede antes, durante y después de nuestros shows.
+                            </p>
+                            <a href="post/tras-bambalinas.html" class="btn btn-secondary">Leer más</a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Paginación -->
+                <nav class="pagination" style="margin-top: 60px; text-align: center;">
+                    <ul style="display: flex; justify-content: center; gap: 10px; list-style: none; align-items: center;">
+                        <li><a href="#" class="page-link" style="display: inline-block; padding: 8px 16px; background: var(--button-blue); color: white; text-decoration: none; border-radius: 4px;">1</a></li>
+                        <li><a href="#" class="page-link" style="display: inline-block; padding: 8px 16px; background: rgba(0,0,0,0.3); color: white; text-decoration: none; border-radius: 4px;">2</a></li>
+                        <li><a href="#" class="page-link" style="display: inline-block; padding: 8px 16px; background: rgba(0,0,0,0.3); color: white; text-decoration: none; border-radius: 4px;">3</a></li>
+                        <li><a href="#" class="page-link" style="display: inline-block; padding: 8px 16px; background: var(--button-blue); color: white; text-decoration: none; border-radius: 4px; margin-left: 10px;">Siguiente →</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer" id="SITE_FOOTER">
+        <div class="footer-social">
+            <a href="https://wa.me/+525535412631?text=Hola,%20me%20interesa%20cotizar%20mi%20evento..."
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="WhatsApp">
+                <img src="assets/icons/whatsapp-icon.png"
+                     alt="WhatsApp"
+                     class="social-icon">
+            </a>
+            <a href="https://www.facebook.com/grupocelula/"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Facebook">
+                <img src="assets/icons/facebook-icon.png"
+                     alt="Facebook"
+                     class="social-icon">
+            </a>
+            <a href="https://www.youtube.com/user/GIOVASTUDIO1"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="YouTube">
+                <img src="assets/icons/youtube-icon.png"
+                     alt="YouTube"
+                     class="social-icon">
+            </a>
+            <a href="https://twitter.com/lacelula2"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Twitter">
+                <img src="assets/icons/twitter-icon.png"
+                     alt="Twitter"
+                     class="social-icon">
+            </a>
+        </div>
+
+        <div class="footer-text">
+            <p>&copy; 2025 Grupo Musical Versátil La Célula. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript común -->
+    <script src="js/navigation.js"></script>
+
+    <!-- Persistent Video Background -->
+    <script src="js/video-background.js"></script>
+
+    <!-- Estilos específicos para el blog -->
+    <style>
+        .blog-post-featured {
+            display: flex;
+            flex-direction: column;
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 40px;
+        }
+
+        .post-image {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .post-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-post-featured:hover .post-img {
+            transform: scale(1.05);
+        }
+
+        .post-content {
+            padding: 30px;
+        }
+
+        .post-content-card {
+            padding: 20px;
+        }
+
+        .post-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .post-category {
+            background: var(--accent-yellow);
+            color: var(--primary-bg);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .post-date {
+            color: var(--secondary-text);
+            font-size: 13px;
+        }
+
+        .post-title {
+            font: var(--font-large);
+            color: var(--content-text);
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .post-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-name {
+            font-weight: 600;
+            color: var(--content-text);
+        }
+
+        .post-stats {
+            font-size: 12px;
+            color: var(--secondary-text);
+        }
+
+        .post-excerpt {
+            font: var(--font-body);
+            color: var(--content-text);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .blog-posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .blog-post-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .blog-post-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .blog-post-card .post-image {
+            height: 200px;
+        }
+
+        .pagination {
+            margin-top: 60px;
+        }
+
+        .page-link {
+            display: inline-block;
+            padding: 8px 16px;
+            background: var(--button-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background 0.3s ease;
+        }
+
+        .page-link:hover {
+            background: var(--button-blue-hover);
+        }
+
+        @media (max-width: 768px) {
+            .blog-post-featured {
+                flex-direction: column;
+            }
+
+            .post-image {
+                height: 220px;
+            }
+
+            .post-content {
+                padding: 20px;
+            }
+
+            .blog-posts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .post-author {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .post-meta {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+    </style>
+</body>
+</html>
