@@ -40,7 +40,15 @@ class CelulaChatbotManager {
             this.leadData = state.leadData || {};
 
             if (state.isChatActive) {
+                // Ocultar formulario
                 this.leadForm.style.display = 'none';
+                this.leadForm.classList.remove('active');
+                
+                // Mostrar ventana de chat
+                const chatWindowContainer = document.getElementById('chat-window-container');
+                chatWindowContainer.style.display = 'flex';
+                chatWindowContainer.classList.add('active');
+                
                 this.chatWindow.style.display = 'flex';
                 this.chatInputArea.style.display = 'flex';
                 this.repopulateChat();
@@ -62,6 +70,24 @@ class CelulaChatbotManager {
     }
 
     setupEventListeners() {
+        // Evento para el botón flotante del chatbot (abrir chatbot)
+        document.getElementById('chatbot-toggle')?.addEventListener('click', () => {
+            this.leadForm.style.display = 'flex';
+            this.leadForm.classList.add('active');
+        });
+        
+        // Evento para cerrar el formulario de lead
+        document.getElementById('lead-form-close')?.addEventListener('click', () => {
+            this.leadForm.style.display = 'none';
+            this.leadForm.classList.remove('active');
+        });
+        
+        // Evento para cerrar la ventana de chat
+        document.getElementById('chat-close')?.addEventListener('click', () => {
+            document.getElementById('chat-window-container').style.display = 'none';
+            document.getElementById('chat-window-container').classList.remove('active');
+        });
+
         this.closeBtn?.addEventListener('click', () => {
             parent.postMessage('close-chatbot', '*');
         });
@@ -101,9 +127,18 @@ class CelulaChatbotManager {
         this.leadData.eventType = eventTypeInput.value.trim();
 
         if (this.leadData.name && this.leadData.email && this.leadData.phone) {
+            // Ocultar formulario
             this.leadForm.style.display = 'none';
+            this.leadForm.classList.remove('active');
+            
+            // Mostrar ventana de chat
+            const chatWindowContainer = document.getElementById('chat-window-container');
+            chatWindowContainer.style.display = 'flex';
+            chatWindowContainer.classList.add('active');
+            
             this.chatWindow.style.display = 'flex';
             this.chatInputArea.style.display = 'flex';
+            
             await this.startChat();
             this.saveState();
         }
@@ -506,5 +541,27 @@ Tipo de evento: ${this.leadData.eventType || "[Sin especificar]"}`;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    new CelulaChatbotManager();
+    const chatbotManager = new CelulaChatbotManager();
+    
+    // Inicializar estado visual de los componentes del chatbot
+    const chatbotToggle = document.getElementById('chatbot-toggle');
+    const leadForm = document.getElementById('lead-form');
+    const chatWindowContainer = document.getElementById('chat-window-container');
+    
+    if (chatbotToggle && leadForm && chatWindowContainer) {
+        // Si existe un estado guardado, restaurarlo
+        const savedState = sessionStorage.getItem('celulaChatbotState');
+        if (savedState) {
+            const state = JSON.parse(savedState);
+            if (state.isChatActive) {
+                leadForm.style.display = 'none';
+                chatWindowContainer.style.display = 'flex';
+                chatWindowContainer.classList.add('active');
+            }
+        }
+        
+        console.log('Chatbot La Célula inicializado correctamente');
+    } else {
+        console.error('No se pudieron encontrar elementos del chatbot');
+    }
 });
