@@ -401,6 +401,9 @@ html, body {
     height: 600px;
     position: relative;
     transition: transform 0.3s ease;
+    display: block;
+    visibility: visible;
+    opacity: 1;
 }
 
 .service-card:hover {
@@ -688,38 +691,109 @@ html, body {
         grid-template-columns: 1fr;
         grid-template-rows: auto;
         gap: 30px;
-        padding: 0 10px;
+        padding: 0 15px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .service-card {
-        height: 500px;
-        max-width: 400px;
+        height: 550px;
+        max-width: 100%;
+        width: 100%;
         margin: 0 auto;
+        display: block;
+        visibility: visible;
+        opacity: 1;
+        cursor: pointer;
+    }
+
+    /* Mantener el efecto flip en móvil pero desactivar hover */
+    .service-card:hover {
+        transform: none;
+    }
+
+    .service-card:hover .card-inner {
+        transform: none;
+    }
+
+    /* Agregar clase para flip activado por click */
+    .service-card.flipped .card-inner {
+        transform: rotateY(180deg);
+    }
+
+    .card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+    }
+
+    .card-front, .card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+    }
+
+    .card-back {
+        transform: rotateY(180deg);
+        padding: 30px 20px;
     }
 
     .service-image {
         height: 220px;
+        width: 100%;
+        display: block;
     }
 
     .service-content {
         padding: 25px 20px;
+        display: block;
     }
 
     .service-title {
         font-size: 24px;
+        color: #ffffff;
     }
 
-    .card-back {
-        padding: 30px 20px;
+    .detailed-features {
+        display: block;
+        visibility: visible;
     }
 
     .detailed-features li {
         font-size: 14px;
         margin-bottom: 12px;
+        display: list-item;
     }
 
     .section-title {
         font-size: 28px;
+    }
+
+    /* Indicador visual de que la tarjeta es clickeable */
+    .service-card::after {
+        content: "👆 Toca para ver más";
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 12px;
+        z-index: 10;
+        pointer-events: none;
+        opacity: 0.8;
+    }
+
+    .service-card.flipped::after {
+        content: "👆 Toca para volver";
     }
 }
 
@@ -734,11 +808,14 @@ html, body {
     }
 
     .service-card {
-        height: 450px;
+        height: 500px;
+        width: 100%;
+        max-width: 100%;
     }
 
     .service-image {
         height: 180px;
+        width: 100%;
     }
 
     .service-content {
@@ -748,6 +825,7 @@ html, body {
     .service-title {
         font-size: 20px;
         margin-bottom: 15px;
+        color: #ffffff;
     }
 
     .service-description {
@@ -759,17 +837,10 @@ html, body {
         padding: 25px 15px;
     }
 
-
     .detailed-features li {
         font-size: 13px;
         margin-bottom: 10px;
         padding-left: 25px;
-    }
-
-    .detailed-features li:before {
-        width: 16px;
-        height: 16px;
-        font-size: 10px;
     }
 
     .social-bar {
@@ -779,6 +850,11 @@ html, body {
     .social-icon {
         width: 32px;
         height: 32px;
+    }
+
+    .service-card::after {
+        font-size: 11px;
+        padding: 6px 12px;
     }
 }
 

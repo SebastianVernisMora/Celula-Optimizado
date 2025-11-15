@@ -71,5 +71,57 @@ document.addEventListener('DOMContentLoaded', function() {
 
     animatedElements.forEach(el => animationObserver.observe(el));
 
+    // Manejo de tarjetas de servicios con efecto flip
+    function handleServiceCards() {
+        const serviceCards = document.querySelectorAll('.service-card');
+        const isMobile = window.innerWidth <= 768;
+
+        console.log(`📱 Detectado: ${isMobile ? 'Móvil' : 'Desktop'} (${window.innerWidth}px)`);
+        console.log(`🎴 Tarjetas encontradas: ${serviceCards.length}`);
+
+        serviceCards.forEach((card, index) => {
+            // Remover event listeners previos clonando el elemento
+            const newCard = card.cloneNode(true);
+            card.parentNode.replaceChild(newCard, card);
+            
+            // Agregar event listener para flip con click/tap
+            newCard.addEventListener('click', function(e) {
+                // Prevenir que el click en los botones active el flip
+                if (e.target.tagName === 'A' || e.target.closest('a')) {
+                    return;
+                }
+                
+                this.classList.toggle('flipped');
+                console.log(`🔄 Tarjeta ${index + 1} ${this.classList.contains('flipped') ? 'volteada' : 'restaurada'}`);
+            });
+
+            // En móvil, agregar soporte para touch
+            if (isMobile) {
+                newCard.addEventListener('touchstart', function(e) {
+                    // Prevenir que el touch en los botones active el flip
+                    if (e.target.tagName === 'A' || e.target.closest('a')) {
+                        return;
+                    }
+                    // El evento click se disparará automáticamente después del touchstart
+                }, { passive: true });
+            }
+
+            console.log(`✅ Tarjeta ${index + 1} configurada con flip por ${isMobile ? 'tap' : 'click'}`);
+        });
+    }
+
+    // Ejecutar al cargar
+    handleServiceCards();
+
+    // Detectar cambios de tamaño de ventana
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            console.log('🔄 Reconfigurando tarjetas por cambio de tamaño...');
+            handleServiceCards();
+        }, 250);
+    });
+
     console.log('✅ Grupo Musical Célula - Sitio homologado cargado correctamente');
 });
