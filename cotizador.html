@@ -46,9 +46,9 @@
     <!-- Contenido Principal -->
     <main class="site-container">
         <!-- Hero del Cotizador -->
-        <section class="hero-section" style="min-height: 60vh;">
+        <section class="hero-section hero-cotizador">
             <div class="hero-content fade-in">
-                <h1 class="section-title" style="color: var(--primary-text); font-size: 48px;">Cotizador</h1>
+                <h1 class="section-title hero-title-large">Cotizador</h1>
                 <p class="hero-title">Obtén un presupuesto personalizado para tu evento</p>
             </div>
         </section>
@@ -56,7 +56,7 @@
         <!-- Formulario de Cotización -->
         <section class="content-section">
             <div class="main-content">
-                <div style="max-width: 600px; margin: 0 auto;">
+                <div class="form-container">
                     <h2 class="section-title">Solicita tu Cotización</h2>
                     <p class="section-description">
                         Completa el formulario y te contactaremos para brindarte un presupuesto personalizado
@@ -69,85 +69,78 @@
 
                             <input type="hidden" name="access_key" value="962105fc-38f8-49cd-87d4-a86a13e5af0a">
 
-                            <div class="form-group" style="margin-bottom: 20px;">
-                                <label for="name" style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--content-text);">Nombre *</label>
-                                <input type="text" id="name" name="name" required
-                                       style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: var(--border-radius); font: var(--font-body);">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Nombre *</label>
+                                <input type="text" id="name" name="name" required class="form-input">
                             </div>
-                            <div class="form-group" style="margin-bottom: 20px;">
-                                <label for="number" style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--content-text);">Número telefónico *</label>
-                                <input type="number" id="number" name="number" required
-                                       style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: var(--border-radius); font: var(--font-body);">
+                            <div class="form-group">
+                                <label for="number" class="form-label">Número telefónico *</label>
+                                <input type="number" id="number" name="number" required class="form-input">
                             </div>
-                            <div class="form-group" style="margin-bottom: 20px;">
-                                <label for="email" style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--content-text);">Email *</label>
-                                <input type="email" id="email" name="email" required
-                                       style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: var(--border-radius); font: var(--font-body);">
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email *</label>
+                                <input type="email" id="email" name="email" required class="form-input">
                             </div>
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                            <div class="form-grid-2col">
                                 <div>
-                                    <label for="event-type" style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--content-text);">Tipo de Evento *</label>
-                                    <select id="event-type" name="event-type" required
-                                            style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: var(--border-radius); font: var(--font-body); color: var(--content-text);">
-                                        <option value="">Selecciona el tipo de evento</option>
-                                        <option value="boda">Boda</option>
-                                        <option value="xv">XV Años</option>
-                                        <option value="corporativo">Evento Corporativo</option>
-                                        <option value="otro">Otro</option>
+                                    <label for="event-type" class="form-label">Tipo de Evento *</label>
+                                    <select id="event-type" name="event-type" required class="form-select">
+                                        <option value="" class="form-option">Selecciona el tipo de evento</option>
+                                        <option value="boda" class="form-option">Boda</option>
+                                        <option value="xv" class="form-option">XV Años</option>
+                                        <option value="corporativo" class="form-option">Evento Corporativo</option>
+                                        <option value="otro" class="form-option">Otro</option>
                                     </select>
                                 </div>
                                 <div>
-                                    <label for="event-date" style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--content-text);">Fecha del evento *</label>
-                                    <input type="date" id="event-date" name="event-date" required
-                                           style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: var(--border-radius); font: var(--font-body); color: var(--content-text);">
+                                    <label for="event-date" class="form-label">Fecha del evento *</label>
+                                    <input type="date" id="event-date" name="event-date" required class="form-input">
                                 </div>
                             </div>
-                            <div class="form-group" style="margin-bottom: 20px;">
-                                <label for="guests-contact" style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--content-text);">Número de Invitados</label>
-                                <select id="guests-contact" name="guests-contact"
-                                        style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: var(--border-radius); font: var(--font-body); color: var(--content-text);">
-                                    <option value="">Selecciona el número de invitados</option>
-                                    <option value="50-100">50-100 invitados</option>
-                                    <option value="101-200">101-200 invitados</option>
-                                    <option value="201-500">201-500 invitados</option>
-                                    <option value="500+">Más de 500 invitados</option>
+                            <div class="form-group">
+                                <label for="guests-contact" class="form-label">Número de Invitados</label>
+                                <select id="guests-contact" name="guests-contact" class="form-select">
+                                    <option value="" class="form-option">Selecciona el número de invitados</option>
+                                    <option value="50-100" class="form-option">50-100 invitados</option>
+                                    <option value="101-200" class="form-option">101-200 invitados</option>
+                                    <option value="201-500" class="form-option">201-500 invitados</option>
+                                    <option value="500+" class="form-option">Más de 500 invitados</option>
                                 </select>
                             </div>
-                            <div style="margin-bottom: 20px;">
-                                <h3 style="font-weight: bold; color: var(--content-text); font-size: 1.1rem; margin-bottom: 20px;">Ubicación del Evento</h3>
+                            <div class="mb-20">
+                                <h3 class="form-section-title">Ubicación del Evento</h3>
                                 <div>
-                                    <label for="city-contact" style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--content-text);">Ciudad/Área Metropolitana *</label>
-                                    <select id="city-contact" name="city-contact" required
-                                            style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: var(--border-radius); font: var(--font-body); color: var(--content-text);">
-                                        <option value="">Selecciona una ciudad</option>
-                                        <option value="cdmx">Ciudad de México (CDMX)</option>
-                                        <option value="estado-mexico">Estado de México</option>
-                                        <option value="morelos">Morelos</option>
-                                        <option value="puebla">Puebla</option>
-                                        <option value="hidalgo">Hidalgo</option>
+                                    <label for="city-contact" class="form-label">Ciudad/Área Metropolitana *</label>
+                                    <select id="city-contact" name="city-contact" required class="form-select">
+                                        <option value="" class="form-option">Selecciona una ciudad</option>
+                                        <option value="cdmx" class="form-option">Ciudad de México (CDMX)</option>
+                                        <option value="estado-mexico" class="form-option">Estado de México</option>
+                                        <option value="morelos" class="form-option">Morelos</option>
+                                        <option value="puebla" class="form-option">Puebla</option>
+                                        <option value="hidalgo" class="form-option">Hidalgo</option>
                                     </select>
                                 </div>
                             </div>
                             </div>
-                            <div class="form-group" style="margin-bottom: 20px;">
-                                <label for="message" style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--content-text);">Mensaje</label>
+                            <div class="form-group">
+                                <label for="message" class="form-label">Mensaje</label>
                                 <textarea id="message" name="message" rows="4"
                                           placeholder="Cuéntanos más..."
-                                          style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: var(--border-radius); font: var(--font-body); color: var(--content-text); resize: vertical;"></textarea>
+                                          class="form-textarea"></textarea>
                             </div>
 
-                            <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 16px; padding: 15px 30px;">
+                            <button type="submit" class="btn btn-primary form-submit-full">
                                 Enviar Solicitud
                             </button>
                         </form>
                     </div>
 
                     <!-- Información de contacto -->
-                    <div class="contact-info" style="margin-top: 40px; text-align: center;">
-                        <h3 style="font: var(--font-title); color: var(--content-text); margin-bottom: 20px;">
+                    <div class="contact-info-container">
+                        <h3 class="contact-title">
                             ¿Prefieres contactarnos directamente?
                         </h3>
-                        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                        <div class="contact-buttons">
                             <a href="https://wa.me/+525535412631?text=Hola,%20me%20interesa%20cotizar%20mi%20evento..."
                                target="_blank"
                                class="btn btn-secondary">
@@ -206,127 +199,14 @@
     </footer>
 
     <!-- JavaScript para el formulario -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Navegación móvil
-            const mobileToggle = document.getElementById('mobile-menu-toggle');
-            const navMenu = document.getElementById('nav-menu');
-
-            if (mobileToggle && navMenu) {
-                mobileToggle.addEventListener('click', function() {
-                    navMenu.classList.toggle('active');
-                    this.classList.toggle('active');
-                });
-            }
-
-            // Manejo del formulario
-            const form = document.querySelector('.cotizador-form');
-            if (form) {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-
-                    // Recopilar datos del formulario
-                    const formData = new FormData(this);
-                    const data = Object.fromEntries(formData);
-
-                    // Crear mensaje para WhatsApp
-                    const mensaje = `Hola, me interesa cotizar mi evento:
-
-🎵 *Cotización de Evento Musical*
-👤 *Nombre:* ${data.nombre}
-📞 *Teléfono:* ${data.telefono}
-📧 *Email:* ${data.email}
-🎉 *Tipo de evento:* ${data.evento}
-📅 *Fecha:* ${data.fecha}
-📍 *Ubicación:* ${data.ubicacion}
-👥 *Invitados:* ${data.invitados}
-💬 *Comentarios:* ${data.comentarios || 'Ninguno'}
-
-¡Espero su respuesta!`;
-
-                    // Abrir WhatsApp con el mensaje
-                    const whatsappUrl = `https://wa.me/+525535412631?text=${encodeURIComponent(mensaje)}`;
-                    window.open(whatsappUrl, '_blank');
-
-                    // Mostrar confirmación
-                    alert('¡Gracias! Te redirigimos a WhatsApp para completar tu cotización.');
-                });
-            }
-
-            console.log('✅ Cotizador cargado correctamente');
-        });
-    </script>
+    <script src="js/form-handler.js"></script>
 
     <!-- Estilos adicionales para el formulario -->
-    <style>
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            border-color: var(--button-blue);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(61, 155, 233, 0.1);
-        }
-
-        .form-group input:invalid,
-        .form-group select:invalid {
-            border-color: #e74c3c;
-        }
-
-        .form-group input:valid,
-        .form-group select:valid {
-            border-color: #27ae60;
-        }
-
-        .mobile-menu-toggle {
-            display: none;
-            flex-direction: column;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        .mobile-menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: var(--primary-text);
-            margin: 3px 0;
-            transition: 0.3s;
-        }
-
-        @media (max-width: 768px) {
-            .mobile-menu-toggle {
-                display: flex;
-            }
-
-            .nav-menu {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--overlay-bg);
-                backdrop-filter: blur(10px);
-                flex-direction: column;
-                padding: 20px;
-                transform: translateY(-100%);
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.3s ease;
-            }
-
-            .nav-menu.active {
-                transform: translateY(0);
-                opacity: 1;
-                visibility: visible;
-            }
-
-            .cotizador-form {
-                padding: 20px !important;
-            }
-        }
-    </style>
 
     <!-- Persistent Video Background -->
     <script src="js/video-background.js"></script>
+    
+    <!-- Optimizaciones -->
+    <script src="js/optimizations.js"></script>
 </body>
 </html>
