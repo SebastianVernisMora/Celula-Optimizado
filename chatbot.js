@@ -101,8 +101,36 @@ class CelulaChatbotManager {
         }
     }
 
+    // Determina si un mensaje es visible para el usuario
+    isVisibleMessage(message) {
+        // No mostrar el contexto inicial de sistema
+        if (message.parts[0].text.includes('Eres el Asistente Musical Virtual') ||
+            message.parts[0].text.includes('MISIÓN PRINCIPAL:') ||
+            message.parts[0].text.includes('MÉTODO SPIN') ||
+            message.parts[0].text.includes('DIRECTRICES CRÍTICAS:')) {
+            return false;
+        }
+        
+        // No mostrar la respuesta de inicialización del sistema
+        if (message.role === 'model' && 
+            message.parts[0].text.includes('¡Entendido! Soy el Asistente Musical de Grupo Musical Versátil La Célula')) {
+            return false;
+        }
+        
+        return true;
+    }
+    
+    // Filtra los mensajes que son visibles para el usuario
+    getVisibleMessages() {
+        return this.chatHistory.filter(message => this.isVisibleMessage(message));
+    }
+    
     repopulateChat() {
-        this.chatHistory.forEach(item => {
+        // Limpiar la ventana de chat
+        this.chatWindow.innerHTML = '';
+        
+        // Mostrar solo los mensajes visibles para el usuario
+        this.getVisibleMessages().forEach(item => {
             if (item.role === 'user') {
                 this.appendMessage(item.parts[0].text, 'user');
             } else if (item.role === 'model') {
@@ -255,9 +283,13 @@ class CelulaChatbotManager {
     }
 
     async startChat() {
-        await this.loadInitialContext();
-        // Mensaje de saludo personalizado para La Célula con enfoque SPIN
-        this.appendMessage(`¡Hola ${this.leadData.name}! 👋 Soy el **Asistente Musical** de Grupo Musical La Célula 🎵
+        // loadInitialContext ahora devuelve true si necesita añadir saludo
+        const needsGreeting = await this.loadInitialContext();
+        
+        // Solo añadir el saludo si es necesario (no existe ya en el historial)
+        if (needsGreeting) {
+            // Mensaje de saludo personalizado para La Célula con enfoque SPIN
+            const greeting = `¡Hola ${this.leadData.name}! 👋 Soy el **Asistente Musical** de Grupo Musical La Célula 🎵
 
 Estoy aquí para ayudarte a encontrar la **solución musical perfecta** para tu ${this.leadData.eventType || "evento"}. Nuestro grupo versátil puede adaptarse a cualquier:
 
@@ -265,12 +297,32 @@ Estoy aquí para ayudarte a encontrar la **solución musical perfecta** para tu 
 • Estilo musical (desde cumbia y salsa hasta rock y pop)
 • Tamaño de evento (desde íntimos hasta masivos)
 
-¿Podrías contarme más detalles sobre el evento que estás planeando? 🎉`, 'bot');
+¿Podrías contarme más detalles sobre el evento que estás planeando? 🎉`;
+            
+            // Añadir al historial y mostrar al usuario
+            this.chatHistory.push({
+                role: "model",
+                parts: [{ text: greeting }]
+            });
+            
+            this.appendMessage(greeting, 'bot');
+            
+            // Guardar el estado para mantener la coherencia entre páginas
+            this.saveState();
+        }
     }
 
     async loadInitialContext() {
         try {
-            const initialContext = `Eres el Asistente Musical Virtual del Grupo Musical Versátil La Célula, especializado en ventas consultivas y cierre de contratos musicales para todo tipo de eventos.
+            // Verificar si ya tenemos el contexto inicial en el historial
+            const hasInitialContext = this.chatHistory.some(item => 
+                item.role === "user" && 
+                item.parts[0].text.includes("Eres el Asistente Musical Virtual")
+            );
+            
+            // Solo añadir el contexto inicial si no existe ya
+            if (!hasInitialContext) {
+                const initialContext = `Eres el Asistente Musical Virtual del Grupo Musical Versátil La Célula, especializado en ventas consultivas y cierre de contratos musicales para todo tipo de eventos.
 
 MISIÓN PRINCIPAL:
 Tu misión es EXTRAER LA MAYOR CANTIDAD DE INFORMACIÓN POSIBLE sobre el evento del cliente, utilizando el método SPIN y técnicas de venta avanzadas para calificar al cliente y guiarlo hacia una cotización personalizada.
@@ -381,20 +433,33 @@ Nombre: ${this.leadData.name || "[Sin nombre]"}
 Correo electrónico: ${this.leadData.email || "[Sin email]"}
 Número de teléfono: ${this.leadData.phone || "[Sin teléfono]"}
 Tipo de evento: ${this.leadData.eventType || "[Sin especificar]"}`;
+                
+                this.chatHistory.push({
+                    role: "user",
+                    parts: [{ text: initialContext }]
+                });
+                this.chatHistory.push({
+                    role: "model",
+                    parts: [{ text: "¡Entendido! Soy el Asistente Musical de Grupo Musical Versátil La Célula. Mi misión es usar el método SPIN y técnicas de venta avanzadas para descubrir todas las necesidades del cliente, extraer la mayor información posible sobre su evento, y presentar nuestros servicios de forma convincente. Mantendré un formato consistente en mis respuestas usando viñetas, numeración y elementos visuales para resaltar los beneficios de nuestros paquetes musicales. Cada interacción estará orientada a guiar al cliente hacia una cotización personalizada, destacando siempre nuestra versatilidad musical y adaptabilidad. 🎵🎉" }]
+                });
+            }
             
-            this.chatHistory.push({
-                role: "user",
-                parts: [{ text: initialContext }]
-            });
-            this.chatHistory.push({
-                role: "model",
-                parts: [{ text: "¡Entendido! Soy el Asistente Musical de Grupo Musical Versátil La Célula. Mi misión es usar el método SPIN y técnicas de venta avanzadas para descubrir todas las necesidades del cliente, extraer la mayor información posible sobre su evento, y presentar nuestros servicios de forma convincente. Mantendré un formato consistente en mis respuestas usando viñetas, numeración y elementos visuales para resaltar los beneficios de nuestros paquetes musicales. Cada interacción estará orientada a guiar al cliente hacia una cotización personalizada, destacando siempre nuestra versatilidad musical y adaptabilidad. 🎵🎉" }]
-            });
+            // Verificar si ya existe un saludo del bot
+            const hasGreeting = this.chatHistory.some(item =>
+                item.role === "model" &&
+                item.parts[0].text.includes("¡Hola") &&
+                item.parts[0].text.includes("Soy el **Asistente Musical**")
+            );
+            
+            // Si no hay saludo, preparamos para añadir uno
+            return !hasGreeting;
+            
         } catch (error) {
             console.error(error);
             this.appendMessage('Error de configuración: No se pudo inicializar el asistente. Por favor, contacta al administrador del sitio.', 'bot');
             this.sendBtn.disabled = true;
             this.userInput.disabled = true;
+            return false;
         }
     }
 
