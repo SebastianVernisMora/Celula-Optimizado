@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Dale un Toque Especial a tu Posada: El Poder de la Música en Vivo - Grupo Musical Versátil La Célula</title>
-    <meta name="description" content="Convierte tu posada en un evento inolvidable con música en vivo. Grupo Musical Versátil La Célula ofrece el repertorio perfecto para celebrar.">
+    <title>Lo que Nuestros Clientes Dicen de Nosotros: Historias de Eventos Inolvidables - Grupo Musical Versátil La Célula</title>
+    <meta name="description" content="Descubre testimonios reales de clientes que vivieron eventos inolvidables con Grupo Musical Versátil La Célula.">
 
     <!-- Favicon -->
     <link rel="icon" href="../assets/logo/logo.jpg" type="image/jpeg">
@@ -25,6 +25,12 @@
             <ul class="nav-menu" id="nav-menu">
                 <li class="nav-item">
                     <a href="../index.html" class="nav-link">INICIO</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#servicios" class="nav-link">SERVICIOS</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#banda" class="nav-link">LA BANDA</a>
                 </li>
                 <li class="nav-item">
                     <a href="../cotizador.html" class="nav-link">COTIZADOR</a>
@@ -48,8 +54,8 @@
         <!-- Hero del Artículo -->
         <section class="hero-section" id="hero">
             <div class="hero-content fade-in">
-                <h1 class="section-title">Dale un Toque Especial a tu Posada: El Poder de la Música en Vivo</h1>
-                <p class="hero-title">Convierte tu posada en un evento inolvidable con música en vivo. Grupo Musical Versátil La Célula of...</p>
+                <h1 class="section-title">Lo que Nuestros Clientes Dicen de Nosotros: Historias de Eventos Inolvidables</h1>
+                <p class="hero-title">Descubre testimonios reales de clientes que vivieron eventos inolvidables con Grupo Musical Versátil...</p>
             </div>
         </section>
 
@@ -75,29 +81,29 @@
                     </div>
 
                     <div class="post-body" style="font: var(--font-body); color: var(--content-text); line-height: 1.8; max-width: 800px; margin: 0 auto;">
-<h1>Dale un Toque Especial a tu Posada: El Poder de la Música en Vivo</h1>
-<p>Las posadas son el momento perfecto para cerrar el año con alegría. Si quieres que la tuya sea <strong>inolvidable</strong>, no basta con un buen banquete: <strong>la música es la clave</strong>. <strong>Grupo Musical Versátil La Célula</strong> transforma cualquier posada en una gran celebración con su energía y repertorio variado.</p>
+<h1>Lo que Nuestros Clientes Dicen de Nosotros: Historias de Eventos Inolvidables</h1>
+<p>Las mejores recomendaciones vienen de quienes ya vivieron la experiencia. <strong>Grupo Musical Versátil La Célula</strong> ha sido parte de bodas, eventos corporativos y celebraciones privadas, dejando recuerdos imborrables. Aquí compartimos algunas de esas historias.</p>
 
-<h2>1. Ritmos navideños que alegran el ambiente</h2>
-<p>Villancicos modernos, versiones festivas y temas clásicos de temporada son perfectos para iniciar la posada con un toque cálido y alegre.</p>
-<h2>2. Bloques de baile que prenden la fiesta</h2>
-<p>Después de la cena, llega la hora de bailar. La Célula combina cumbia, salsa, merengue y pop actual para que nadie se quede sentado.</p>
-<h2>3. Canciones que unen generaciones</h2>
-<p>Desde clásicos ochenteros hasta éxitos actuales, nuestro repertorio es ideal para que tanto jóvenes como adultos disfruten de la pista de baile.</p>
-<h2>4. Interacción con el público</h2>
-<p>La banda no solo toca, <strong>anima, canta y conecta</strong> con los invitados, logrando un ambiente único y participativo.</p>
-<h2>Conclusión: Haz de tu posada un recuerdo imborrable</h2>
-<p>Con música en vivo, tu posada dejará de ser “una reunión más” y se convertirá en el evento del año. <strong>Grupo Musical Versátil La Célula</strong> está listo para darle vida a tu celebración.</p>
-<a class="cta" href="#">🎶 ¡Agenda tu posada con Célula y asegura la mejor música!</a>
+<h2>Boda de Ana y Luis – Elegancia y emoción en cada nota</h2>
+<blockquote>“Desde el vals hasta la última cumbia, La Célula hizo que nuestra boda fuera perfecta. La energía que transmitieron fue increíble, ¡todos nuestros invitados siguen hablando del evento!”</blockquote>
+<h2>Evento Corporativo de Grupo Solaris – Profesionalismo total</h2>
+<blockquote>“Queríamos una atmósfera elegante para nuestra cena anual, pero que terminara en una gran fiesta. La banda logró exactamente eso, manejaron cada momento a la perfección.”</blockquote>
+<h2>XV Años de Sofía – Diversión para todas las edades</h2>
+<blockquote>“Mi hija quería reguetón, pero mis padres cumbia. ¡La Célula logró que todos bailaran sin parar! Su repertorio es impresionante y su trato, impecable.”</blockquote>
+<h2>Celebración privada – Un show que superó expectativas</h2>
+<blockquote>“Contratamos a la banda para una fiesta familiar y fue la mejor decisión. Su interacción con los invitados hizo que nadie se quedara sentado.”</blockquote>
+<h2>Conclusión: Clientes felices, eventos memorables</h2>
+<p>Las palabras de nuestros clientes reflejan el compromiso y pasión que ponemos en cada presentación. <strong>Grupo Musical Versátil La Célula</strong> convierte cualquier celebración en una experiencia única.</p>
+<a class="cta" href="#">🎶 ¡Haz que tu evento sea el próximo testimonio, agenda con Célula!</a>
 <h3>Preguntas Frecuentes (FAQs)</h3>
-<p><strong>1. ¿Tienen repertorio navideño?</strong><br/>Sí, contamos con canciones especiales para la temporada.</p>
-<p><strong>2. ¿Se pueden incluir dinámicas durante el show?</strong><br/>Por supuesto, animamos a los invitados y creamos interacción en todo momento.</p>
-<p><strong>3. ¿La banda lleva todo el equipo necesario?</strong><br/>Sí, sonido, iluminación y montaje están incluidos en el servicio.</p>
-<p><strong>4. ¿Cómo contrato a Grupo Musical Versátil La Célula?</strong><br/>Solo debes <a href="#">contactarnos aquí</a> y asegurar tu fecha antes de que se agende.</p>
+<p><strong>1. ¿Tienen más testimonios disponibles?</strong><br/>Sí, contamos con reseñas y videos en nuestras redes sociales.</p>
+<p><strong>2. ¿Puedo ver videos de eventos anteriores?</strong><br/>Por supuesto, tenemos material para que conozcas nuestro trabajo.</p>
+<p><strong>3. ¿Qué tipo de eventos han cubierto?</strong><br/>Desde bodas y corporativos hasta aniversarios y fiestas privadas.</p>
+<p><strong>4. ¿Cómo puedo ser parte de estas historias?</strong><br/>Solo debes <a href="#">contactarnos aquí</a> y hacer que tu evento sea inolvidable.</p>
                     </div>
 
                     <div class="post-tags" style="margin-top: 40px; text-align: center; padding: 20px; background: rgba(0,0,0,0.05); border-radius: 8px;">
-                        <span class="post-tag" style="display: inline-block; margin: 5px; padding: 5px 15px; background: var(--accent-yellow); color: var(--primary-bg); border-radius: 20px; font-size: 13px;">#música</span><span class="post-tag" style="display: inline-block; margin: 5px; padding: 5px 15px; background: var(--accent-yellow); color: var(--primary-bg); border-radius: 20px; font-size: 13px;">#eventos</span><span class="post-tag" style="display: inline-block; margin: 5px; padding: 5px 15px; background: var(--accent-yellow); color: var(--primary-bg); border-radius: 20px; font-size: 13px;">#repertorio</span>
+                        <span class="post-tag" style="display: inline-block; margin: 5px; padding: 5px 15px; background: var(--accent-yellow); color: var(--primary-bg); border-radius: 20px; font-size: 13px;">#música</span><span class="post-tag" style="display: inline-block; margin: 5px; padding: 5px 15px; background: var(--accent-yellow); color: var(--primary-bg); border-radius: 20px; font-size: 13px;">#eventos</span><span class="post-tag" style="display: inline-block; margin: 5px; padding: 5px 15px; background: var(--accent-yellow); color: var(--primary-bg); border-radius: 20px; font-size: 13px;">#bodas</span><span class="post-tag" style="display: inline-block; margin: 5px; padding: 5px 15px; background: var(--accent-yellow); color: var(--primary-bg); border-radius: 20px; font-size: 13px;">#corporativo</span>
                         
                         
                         
