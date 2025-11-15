@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Cotizador - Grupo Musical Versátil La Célula</title>
     <meta name="description" content="Cotiza tu evento musical con Grupo Musical Versátil La Célula. Obtén un presupuesto personalizado para tu boda, fiesta o evento corporativo.">
-    
+
     <!-- Favicon -->
     <link rel="icon" href="assets/logo/logo.jpg" type="image/jpeg">
 
@@ -33,7 +33,7 @@
                     <a href="blog.html" class="nav-link">Blog</a>
                 </li>
             </ul>
-            
+
             <!-- Menú móvil -->
             <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Abrir menú">
                 <span></span>
@@ -59,91 +59,83 @@
                 <div style="max-width: 600px; margin: 0 auto;">
                     <h2 class="section-title">Solicita tu Cotización</h2>
                     <p class="section-description">
-                        Completa el formulario y te contactaremos para brindarte un presupuesto personalizado 
+                        Completa el formulario y te contactaremos para brindarte un presupuesto personalizado
                         para tu evento musical.
                     </p>
-                    
-                    <form class="cotizador-form" style="background: white; padding: 40px; border-radius: var(--border-radius); box-shadow: var(--card-shadow);">
-                        <div class="form-group" style="margin-bottom: 20px;">
-                            <label for="nombre" style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--content-text);">Nombre completo *</label>
-                            <input type="text" id="nombre" name="nombre" required 
-                                   style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: var(--border-radius); font: var(--font-body);">
-                        </div>
-                        
-                        <div class="form-group" style="margin-bottom: 20px;">
-                            <label for="telefono" style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--content-text);">Teléfono *</label>
-                            <input type="tel" id="telefono" name="telefono" required 
-                                   style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: var(--border-radius); font: var(--font-body);">
-                        </div>
-                        
-                        <div class="form-group" style="margin-bottom: 20px;">
-                            <label for="email" style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--content-text);">Email *</label>
-                            <input type="email" id="email" name="email" required 
-                                   style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: var(--border-radius); font: var(--font-body);">
-                        </div>
-                        
-                        <div class="form-group" style="margin-bottom: 20px;">
-                            <label for="evento" style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--content-text);">Tipo de evento *</label>
-                            <select id="evento" name="evento" required 
-                                    style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: var(--border-radius); font: var(--font-body);">
-                                <option value="">Selecciona el tipo de evento</option>
-                                <option value="boda">Boda</option>
-                                <option value="xv">XV Años</option>
-                                <option value="graduacion">Graduación</option>
-                                <option value="aniversario">Aniversario</option>
-                                <option value="corporativo">Evento Corporativo</option>
-                                <option value="fiesta">Fiesta Familiar</option>
-                                <option value="otro">Otro</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group" style="margin-bottom: 20px;">
-                            <label for="fecha" style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--content-text);">Fecha del evento *</label>
-                            <input type="date" id="fecha" name="fecha" required 
-                                   style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: var(--border-radius); font: var(--font-body);">
-                        </div>
-                        
-                        <div class="form-group" style="margin-bottom: 20px;">
-                            <label for="ubicacion" style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--content-text);">Ubicación del evento *</label>
-                            <input type="text" id="ubicacion" name="ubicacion" required placeholder="Ciudad, Estado"
-                                   style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: var(--border-radius); font: var(--font-body);">
-                        </div>
-                        
-                        <div class="form-group" style="margin-bottom: 20px;">
-                            <label for="invitados" style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--content-text);">Número aproximado de invitados</label>
-                            <select id="invitados" name="invitados" 
-                                    style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: var(--border-radius); font: var(--font-body);">
-                                <option value="">Selecciona el número de invitados</option>
-                                <option value="1-50">1 - 50 personas</option>
-                                <option value="51-100">51 - 100 personas</option>
-                                <option value="101-200">101 - 200 personas</option>
-                                <option value="201-500">201 - 500 personas</option>
-                                <option value="500+">Más de 500 personas</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group" style="margin-bottom: 30px;">
-                            <label for="comentarios" style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--content-text);">Comentarios adicionales</label>
-                            <textarea id="comentarios" name="comentarios" rows="4" 
-                                      placeholder="Cuéntanos más detalles sobre tu evento..."
-                                      style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: var(--border-radius); font: var(--font-body); resize: vertical;"></textarea>
-                        </div>
-                        
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary" style="font-size: 16px; padding: 15px 30px;">
-                                Solicitar Cotización
-                            </button>
-                        </div>
-                    </form>
-                    
+
+                    <div class="p-8 rounded-sm shadow-xl">
+
+                        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+
+                            <input type="hidden" name="access_key" value="962105fc-38f8-49cd-87d4-a86a13e5af0a">
+
+                            <div class="mb-4">
+                                <label for="name" class="block mb-2 text-white font-bold">Nombre</label>
+                                <input type="text" id="name" name="name" required="" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="number" class="block text-white mb-2 font-bold">Número telefónico</label>
+                                <input type="number" id="number" name="number" required="" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="email" class="block text-white mb-2 font-bold">Email</label>
+                                <input type="email" id="email" name="email" required="" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                <div>
+                                    <label for="event-type" class="block mb-2 text-white font-bold">Tipo de Evento</label>
+                                    <select id="event-type" name="event-type" required="" class="w-full bg-gray-800 border text-white border-gray-700 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                                        <option>Boda</option><option>XV Años</option><option>Corporativo</option><option>Otro</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="event-date" class="block mb-2 text-white font-bold">Fecha</label>
+                                    <input type="date" id="event-date" name="event-date" required="" class="w-full bg-gray-800 border text-white border-gray-700 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-yellow-500" style="color-scheme: dark;">
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label for="guests-contact" class="block mb-2 text-white font-bold">Número de Invitados</label>
+                                <select id="guests-contact" name="guests-contact" required="" class="w-full bg-gray-800 border border-gray-700 rounded-lg text-white p-3 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                                    <option value="">Selecciona el número de invitados</option>
+                                    <option value="50-100">50-100 invitados</option>
+                                    <option value="101-200">101-200 invitados</option>
+                                    <option value="201-500">201-500 invitados</option>
+                                    <option value="500+">Más de 500 invitados</option>
+                                </select>
+                            </div>
+                            <div class="space-y-4 mb-4">
+                                <h3 class="font-bold text-white text-lg">Ubicación del Evento</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div>
+                                        <label for="city-contact" class="block mb-2 text-white font-bold">Ciudad/Área Metropolitana</label>
+                                        <select id="city-contact" name="city-contact" required="" class="w-full text-white bg-gray-800 border border-gray-700 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                                            <option value="">Selecciona una ciudad</option>
+                                            <option value="cdmx">Ciudad de México (CDMX)</option>
+                                            <option value="estado-mexico">Estado de México</option>
+                                            <option value="morelos">Morelos</option>
+                                            <option value="puebla">Puebla</option>
+                                            <option value="hidalgo">Hidalgo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label for="message" class="block text-white mb-2 font-bold">Mensaje</label>
+                                <textarea id="message" name="message" rows="4" class="w-full bg-gray-800 border text-white border-gray-700 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="Cuéntanos más..."></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full bg-yellow-500 text-gray-900 font-bold py-3 px-6 rounded-lg hover:bg-yellow-400 transition-colors">Enviar Solicitud</button>
+                        </form>
+                    </div>
+
                     <!-- Información de contacto -->
                     <div class="contact-info" style="margin-top: 40px; text-align: center;">
                         <h3 style="font: var(--font-title); color: var(--content-text); margin-bottom: 20px;">
                             ¿Prefieres contactarnos directamente?
                         </h3>
                         <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                            <a href="https://wa.me/+525535412631?text=Hola,%20me%20interesa%20cotizar%20mi%20evento..." 
-                               target="_blank" 
+                            <a href="https://wa.me/+525535412631?text=Hola,%20me%20interesa%20cotizar%20mi%20evento..."
+                               target="_blank"
                                class="btn btn-secondary">
                                 📱 WhatsApp
                             </a>
@@ -160,40 +152,40 @@
     <!-- Footer -->
     <footer class="site-footer">
         <div class="footer-social">
-            <a href="https://wa.me/+525535412631?text=Hola,%20me%20interesa%20cotizar%20mi%20evento..." 
-               target="_blank" 
-               rel="noopener noreferrer" 
+            <a href="https://wa.me/+525535412631?text=Hola,%20me%20interesa%20cotizar%20mi%20evento..."
+               target="_blank"
+               rel="noopener noreferrer"
                aria-label="WhatsApp">
                 <img src="assets/icons/whatsapp-icon.png"
                      alt="WhatsApp"
                      class="social-icon">
             </a>
-            <a href="https://www.facebook.com/grupocelula/" 
-               target="_blank" 
-               rel="noopener noreferrer" 
+            <a href="https://www.facebook.com/grupocelula/"
+               target="_blank"
+               rel="noopener noreferrer"
                aria-label="Facebook">
                 <img src="assets/icons/facebook-icon.png"
                      alt="Facebook"
                      class="social-icon">
             </a>
-            <a href="https://www.youtube.com/user/GIOVASTUDIO1" 
-               target="_blank" 
-               rel="noopener noreferrer" 
+            <a href="https://www.youtube.com/user/GIOVASTUDIO1"
+               target="_blank"
+               rel="noopener noreferrer"
                aria-label="YouTube">
                 <img src="assets/icons/youtube-icon.png"
                      alt="YouTube"
                      class="social-icon">
             </a>
-            <a href="https://twitter.com/lacelula2" 
-               target="_blank" 
-               rel="noopener noreferrer" 
+            <a href="https://twitter.com/lacelula2"
+               target="_blank"
+               rel="noopener noreferrer"
                aria-label="Twitter">
                 <img src="assets/icons/twitter-icon.png"
                      alt="Twitter"
                      class="social-icon">
             </a>
         </div>
-        
+
         <div class="footer-text">
             <p>&copy; 2025 Grupo Musical Versátil La Célula. Todos los derechos reservados.</p>
         </div>
